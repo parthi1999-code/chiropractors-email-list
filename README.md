@@ -1,8 +1,10 @@
-# Chiropractors Email List — landing page design preview
+# Infinyx Global — product page design preview
 
-Apple-style landing page and "Start My Sample CRM Test" flow for Infinyx Global.
+Chiropractors and Cardiologist Email List pages built from the Infinyx Figma "Dentist Email List" template.
 
-- `index.html` — landing page
-- `sample.html` — sample CRM test flow
+- `chiropractors-email-list/` — Chiropractors Email List page
+- `cardiologist-email-list/` — Cardiologist Email List page
+- `sample/?list=chiropractors|cardiologist` — free sample request form
+- `assets/` — shared styles and scripts
 
-Static HTML/CSS/JS, no build step. Pages are set to `noindex` because this is a design preview.
+Static HTML/CSS/JS, no build step. Photos are placeholders until real images are exported from Figma. Pages are `noindex` because this is a design preview.

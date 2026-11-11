@@ -601,3 +601,4 @@ section{position:relative}
   .ft-form{padding:32px 20px 36px;border-radius:22px}
   .ft-address p{font-size:14.5px}
 }
+@media (max-width:734px){.seg-spacer{height:8px !important}}

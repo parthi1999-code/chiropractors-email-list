@@ -612,6 +612,7 @@ section{position:relative}
   .ft-form{padding:32px 20px 36px;border-radius:22px}
   .ft-address p{font-size:14.5px}
 }
+@media all{.seg-spacer{height:8px !important}}
 
 html,body{width:390px;margin:0}</style>
 </head>
@@ -619,11 +620,11 @@ html,body{width:390px;margin:0}</style>
 
 <header class="site-header">
 <div class="container nav">
-<a class="logo" href="../chiropractors-email-list/" aria-label="Infinyx Global home"><svg viewBox="0 0 48 24" aria-hidden="true"><defs><linearGradient id="lg5" x1="0" x2="1"><stop offset="0" stop-color="#1f3fbf"></stop><stop offset=".55" stop-color="#1f63f0"></stop><stop offset=".56" stop-color="#ff7a1f"></stop><stop offset="1" stop-color="#ff5a14"></stop></linearGradient></defs><path d="M24 12c-3.4-4.4-6.2-7-10-7a7 7 0 0 0 0 14c3.8 0 6.6-2.6 10-7zm0 0c3.4 4.4 6.2 7 10 7a7 7 0 0 0 0-14c-3.8 0-6.6 2.6-10 7z" fill="none" stroke="url(#lg5)" stroke-width="4" stroke-linecap="round"></path></svg><span>INFINYX</span></a>
+<a class="logo" href="../chiropractors-email-list/" aria-label="Infinyx Global home"><svg viewBox="0 0 48 24" aria-hidden="true"><defs><linearGradient id="lg7" x1="0" x2="1"><stop offset="0" stop-color="#1f3fbf"></stop><stop offset=".55" stop-color="#1f63f0"></stop><stop offset=".56" stop-color="#ff7a1f"></stop><stop offset="1" stop-color="#ff5a14"></stop></linearGradient></defs><path d="M24 12c-3.4-4.4-6.2-7-10-7a7 7 0 0 0 0 14c3.8 0 6.6-2.6 10-7zm0 0c3.4 4.4 6.2 7 10 7a7 7 0 0 0 0-14c-3.8 0-6.6 2.6-10 7z" fill="none" stroke="url(#lg7)" stroke-width="4" stroke-linecap="round"></path></svg><span>INFINYX</span></a>
 <nav class="main-nav" id="main-nav" aria-label="Main">
 <a href="#">Home</a>
 <div class="dd"><button type="button" class="" aria-expanded="false" aria-haspopup="true">Services <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
-<div class="dd-menu"><p>Healthcare email lists</p><a href="../chiropractors-email-list/">Chiropractors Email List</a><a href="../cardiologist-email-list/">Cardiologist Email List</a><p>Data services</p><a href="#">B2B Lead Generation</a><a href="#">Data Appending</a></div></div>
+<div class="dd-menu"><p>Healthcare email lists</p><a href="../chiropractors-email-list/">Chiropractors Email List</a><a href="../cardiologist-email-list/">Cardiologist Email List</a><a href="../urologist-email-list/">Urologist Email List</a><p>Data services</p><a href="#">B2B Lead Generation</a><a href="#">Data Appending</a></div></div>
 <div class="dd"><button type="button" aria-expanded="false" aria-haspopup="true">Resources <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
 <div class="dd-menu"><a href="#">Blog</a><a href="#">Case Studies</a></div></div>
 <a href="#">About Us</a>
@@ -648,7 +649,7 @@ html,body{width:390px;margin:0}</style>
 
 <fieldset class="s-step">
 <legend><span class="s-n">1</span>Which list?</legend>
-<div class="seg" role="group" aria-label="Email list" id="f-list"><button type="button" aria-pressed="true">Chiropractors</button><button type="button" aria-pressed="false">Cardiologists</button></div>
+<div class="seg" role="group" aria-label="Email list" id="f-list"><button type="button" aria-pressed="true">Chiropractors</button><button type="button" aria-pressed="false">Cardiologists</button><button type="button" aria-pressed="false">Urologists</button></div>
 </fieldset>
 
 <fieldset class="s-step">
@@ -661,7 +662,7 @@ html,body{width:390px;margin:0}</style>
 <legend><span class="s-n">3</span><span id="model-legend">Practice model</span> <span class="req">*</span></legend>
 <div class="tile-row" role="group" id="f-model" aria-label="Practice model"><button type="button" class="chip tile" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg>Solo owner clinic</button><button type="button" class="chip tile" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg>Multi-DC group</button><button type="button" class="chip tile" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg>Multidisciplinary clinic</button><button type="button" class="chip tile" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg>Franchise location</button></div>
 <div id="pay-wrap">
-<p class="s-label">Payment model</p>
+<p class="s-label" id="pay-label">Payment model</p>
 <div class="seg" role="group" aria-label="Payment model" id="f-pay"><button type="button" aria-pressed="false">Insurance &amp; Medicare</button><button type="button" aria-pressed="false">Cash-based</button><button type="button" aria-pressed="true">Both</button></div>
 </div>
 <label class="s-label" for="f-states">Target states</label>
@@ -726,7 +727,7 @@ html,body{width:390px;margin:0}</style>
 </div>
 <div class="ft-main">
 <div class="ft-left">
-<a class="ft-logo" href="../chiropractors-email-list/" aria-label="Infinyx Global home"><span>Infinyx</span><svg viewBox="0 0 48 24" aria-hidden="true"><defs><linearGradient id="lg6" x1="0" x2="1"><stop offset="0" stop-color="#1f3fbf"></stop><stop offset=".55" stop-color="#1f63f0"></stop><stop offset=".56" stop-color="#ff7a1f"></stop><stop offset="1" stop-color="#ff5a14"></stop></linearGradient></defs><path d="M24 12c-3.4-4.4-6.2-7-10-7a7 7 0 0 0 0 14c3.8 0 6.6-2.6 10-7zm0 0c3.4 4.4 6.2 7 10 7a7 7 0 0 0 0-14c-3.8 0-6.6 2.6-10 7z" fill="none" stroke="url(#lg6)" stroke-width="4" stroke-linecap="round"></path></svg></a>
+<a class="ft-logo" href="../chiropractors-email-list/" aria-label="Infinyx Global home"><span>Infinyx</span><svg viewBox="0 0 48 24" aria-hidden="true"><defs><linearGradient id="lg8" x1="0" x2="1"><stop offset="0" stop-color="#1f3fbf"></stop><stop offset=".55" stop-color="#1f63f0"></stop><stop offset=".56" stop-color="#ff7a1f"></stop><stop offset="1" stop-color="#ff5a14"></stop></linearGradient></defs><path d="M24 12c-3.4-4.4-6.2-7-10-7a7 7 0 0 0 0 14c3.8 0 6.6-2.6 10-7zm0 0c3.4 4.4 6.2 7 10 7a7 7 0 0 0 0-14c-3.8 0-6.6 2.6-10 7z" fill="none" stroke="url(#lg8)" stroke-width="4" stroke-linecap="round"></path></svg></a>
 <div class="ft-address"><span class="ft-ic blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg></span><div><b>Address</b><p>No.808, 2nd Floor, 14th Cross, 18th Main Rd, A Block, Sahakar Nagar, Bengaluru, Karnataka 560092</p></div></div>
 <h3 class="ft-h">About Us</h3>
 <p class="ft-about">Infinyx Global is a multi-region B2B growth partner. We supply verified contact data, run demand generation, build and manage Salesforce, and recruit specialist talent for companies selling across North America, EMEA, APAC and LATAM.</p>

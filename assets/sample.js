@@ -8,7 +8,7 @@
       spec: ['General chiropractic', 'Independent medical examiner', 'Internist', 'Neurology', 'Nutrition', 'Occupational health', 'Orthopedic', 'Pediatric', 'Radiology', 'Rehabilitation', 'Sports', 'Thermography'],
       modelLegend: 'Practice model',
       models: ['Solo owner clinic', 'Multi-DC group', 'Multidisciplinary clinic', 'Franchise location'],
-      pay: ['Insurance & Medicare', 'Cash-based', 'Both'],
+      pay: ['Insurance & Medicare', 'Cash-based', 'Both'], payLabel: 'Payment model', payAny: 'any payment model',
       noun: 'DCs', btn: 'Start My Sample CRM Test', page: '../chiropractors-email-list/'
     },
     cardiologist: {
@@ -21,6 +21,17 @@
       models: ['Employed (hospital or health system)', 'Independent (cardiology group)', 'Academic (teaching hospital)', 'Mixed (multispecialty group)'],
       pay: null,
       noun: '', btn: 'Send My Cardiology Rows', page: '../cardiologist-email-list/'
+    },
+    urologist: {
+      label: 'Urologists',
+      title: 'Review a Sample of Urologists Against Your Target Account List',
+      lead: "Send your target subspecialties and practice settings, and we'll return matching rows for a side-by-side check shortly.",
+      specLegend: 'Subspecialties', specHint: 'Each urologist carries 1 primary subspecialty tag, so counts never double up.',
+      spec: ['General urology', 'Endourology', 'Urologic oncology', 'Pediatric urology', 'Urogynecology', 'Robotic & laparoscopic surgery'],
+      modelLegend: 'Practice setting',
+      models: ['Independent group', 'Hospital-employed', 'Academic'],
+      pay: ['Frequent operators', 'Office-based', 'Both'], payLabel: 'Surgical focus', payAny: 'any surgical focus',
+      noun: '', btn: 'Run My Account Match', page: '../urologist-email-list/'
     }
   };
   var $ = function (id) { return document.getElementById(id); };
@@ -75,6 +86,7 @@
       lm.appendChild(b);
     });
     $('pay-wrap').hidden = !L.pay;
+    if (L.pay) { $('pay-label').textContent = L.payLabel; $('f-pay').setAttribute('aria-label', L.payLabel); }
     if (L.pay) segBtn($('f-pay'), L.pay, st.pay, function (p) { st.pay = p; render(); });
     var url = new URL(location.href); url.searchParams.set('list', k); history.replaceState(null, '', url);
     render();
@@ -87,7 +99,7 @@
     var sT = s.length === 0 ? 'No ' + L.specLegend.toLowerCase() + ' yet' : (s.length <= 2 ? s.join(' & ') : s.length + ' ' + L.specLegend.toLowerCase());
     var mT = m.length === 0 ? 'no ' + L.modelLegend.toLowerCase() + ' yet' : (m.length <= 2 ? m.join(' & ').toLowerCase() : m.length + ' ' + L.modelLegend.toLowerCase() + 's');
     var parts = [L.noun ? sT + ' ' + L.noun : sT, mT];
-    if (L.pay) parts.push(st.pay === 'Both' ? 'any payment model' : st.pay.toLowerCase());
+    if (L.pay) parts.push(st.pay === 'Both' ? L.payAny : st.pay.toLowerCase());
     parts.push($('f-states').value.trim() || 'all states');
     return parts.join(' · ');
   }

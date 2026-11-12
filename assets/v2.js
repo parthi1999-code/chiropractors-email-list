@@ -120,7 +120,7 @@
   var cards = [].slice.call(document.querySelectorAll('.tcard'));
   var tdots = [].slice.call(document.querySelectorAll('#tdots button'));
   var tWrap = document.getElementById('testimonials');
-  var ti = 0, tprog = 0, tpaused = false, tvisible = false, TDUR = 7000;
+  var ti = 0, tprog = 0, tpaused = false, tvisible = false, TDUR = 6000;
   function goT(n) {
     ti = (n + cards.length) % cards.length; tprog = 0;
     cards.forEach(function (c, j) { var on = j === ti; c.classList.toggle('on', on); c.tabIndex = on ? 0 : -1; c.setAttribute('aria-hidden', 'false'); });
@@ -134,9 +134,8 @@
   document.getElementById('tprev').addEventListener('click', function () { goT(ti - 1); });
   document.getElementById('tnext').addEventListener('click', function () { goT(ti + 1); });
   if (tWrap) {
-    tWrap.addEventListener('mouseenter', function () { tpaused = true; });
-    tWrap.addEventListener('mouseleave', function () { tpaused = false; });
-    tWrap.addEventListener('focusin', function () { tpaused = true; });
+    // keeps sliding under the mouse; only pauses while a keyboard user is on the controls
+    tWrap.addEventListener('focusin', function (e) { tpaused = e.target.matches(':focus-visible'); });
     tWrap.addEventListener('focusout', function () { tpaused = false; });
   }
 

@@ -125,20 +125,20 @@
     ucWrap.addEventListener('focusout', function () { paused = false; });
   }
 
-  // Testimonials: expanding cards, auto-rotate with progress pill
-  var cards = [].slice.call(document.querySelectorAll('.tcard'));
+  // Testimonials: one big quote at a time; the people row picks and shows the timer
+  var cards = [].slice.call(document.querySelectorAll('.tq'));
   var tdots = [].slice.call(document.querySelectorAll('#tdots button'));
   var tWrap = document.getElementById('testimonials');
   var ti = 0, tprog = 0, tpaused = false, tvisible = false, TDUR = 6000;
   function goT(n) {
     ti = (n + cards.length) % cards.length; tprog = 0;
-    cards.forEach(function (c, j) { var on = j === ti; c.classList.toggle('on', on); c.tabIndex = on ? 0 : -1; c.setAttribute('aria-hidden', 'false'); });
-    tdots.forEach(function (d, j) { d.style.setProperty('--p', '0%'); if (j === ti) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current'); });
+    cards.forEach(function (c, j) { var on = j === ti; c.classList.toggle('on', on); if (on) c.removeAttribute('aria-hidden'); else c.setAttribute('aria-hidden', 'true'); });
+    tdots.forEach(function (d, j) {
+      d.style.setProperty('--p', '0%');
+      if (j === ti) { d.setAttribute('aria-current', 'true'); var row = d.parentNode; if (row.scrollWidth > row.clientWidth) row.scrollLeft = d.offsetLeft - 16; }
+      else d.removeAttribute('aria-current');
+    });
   }
-  cards.forEach(function (c, i) {
-    c.addEventListener('click', function () { if (i !== ti) goT(i); });
-    c.addEventListener('keydown', function (e) { if ((e.key === 'Enter' || e.key === ' ') && i !== ti) { e.preventDefault(); goT(i); } });
-  });
   tdots.forEach(function (d, i) { d.addEventListener('click', function () { goT(i); }); });
   document.getElementById('tprev').addEventListener('click', function () { goT(ti - 1); });
   document.getElementById('tnext').addEventListener('click', function () { goT(ti + 1); });

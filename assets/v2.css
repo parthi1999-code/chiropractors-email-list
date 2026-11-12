@@ -524,7 +524,7 @@ svg.i{width:18px;height:18px;flex:none}
   .fl-search,.fl-co{display:none}
   .fl-prof{right:8px;top:100px}
   .plat{grid-template-columns:minmax(0,1fr)}
-  .plat-side{position:static}
+  .plat-side{position:static;display:contents}
   .plat-nav{flex-direction:row;overflow-x:auto;gap:4px;scrollbar-width:none;position:sticky;top:60px;background:#fff;z-index:5}
   .plat-nav a{white-space:nowrap;flex:none;border-bottom:1px solid var(--line)}
   .side-cta{display:none}

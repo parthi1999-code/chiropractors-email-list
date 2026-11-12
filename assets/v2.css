@@ -63,7 +63,7 @@ svg.i{width:18px;height:18px;flex:none}
 /* ================= header ================= */
 .hdr{position:fixed;top:0;left:0;right:0;z-index:60;transition:background .3s,box-shadow .3s,top .2s}
 .has-strip .hdr{top:30px}
-.hdr.scrolled{background:rgba(10,30,80,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 rgba(255,255,255,.08)}
+.hdr.scrolled{background:rgba(10,30,80,.97);box-shadow:0 1px 0 rgba(255,255,255,.08)}
 .has-strip .hdr.scrolled{top:0}
 .hdr-in{display:flex;align-items:center;height:60px;color:#fff}
 .logo{display:inline-flex;align-items:center;gap:3px;text-decoration:none;color:#fff}
@@ -490,7 +490,8 @@ svg.i{width:18px;height:18px;flex:none}
 /* reveal */
 .rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
 .rv.in{opacity:1;transform:none}
-/* What we do cards: fade only, nothing inside slides */
+/* What we do cards: static, isolated paint so scrolling stays smooth */
+.pcard{contain:paint}
 .pcard.rv{opacity:1;transform:none;transition:none}
 .pcard *{animation:none}
 @media (prefers-reduced-motion:reduce){

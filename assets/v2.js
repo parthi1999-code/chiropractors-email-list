@@ -199,4 +199,11 @@
     }, { rootMargin: '300px 0px' });
     rvio.observe(rv2);
   }
+
+  // Results map: reveal the region cards once it scrolls into view
+  var rmap = document.querySelector('.rmap');
+  if (rmap) {
+    if (reduce || !hasIO) rmap.classList.add('in');
+    else new IntersectionObserver(function (es, o) { if (es[0].isIntersecting) { rmap.classList.add('in'); o.disconnect(); } }, { threshold: .35 }).observe(rmap);
+  }
 })();

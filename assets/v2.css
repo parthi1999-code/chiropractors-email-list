@@ -1085,3 +1085,39 @@ svg.i{width:18px;height:18px;flex:none}
 .hero-deck .h1l{display:block;white-space:nowrap}
 @media (max-width:1024px){.hero-deck h1{font-size:clamp(38px,7.4vw,64px)}}
 @media (max-width:380px){.hero-deck .h1l{white-space:normal}}
+
+/* ===== results: in-region coverage map (replaces floating cards) ===== */
+.res-top{align-items:center}
+.rmap{position:relative;width:140%;aspect-ratio:1425/585;margin:70px 0 50px 0}
+.rmap-dots{position:absolute;inset:0;width:100%;height:100%;-webkit-mask-image:radial-gradient(75% 90% at 55% 50%,#000 55%,transparent 100%);mask-image:radial-gradient(75% 90% at 55% 50%,#000 55%,transparent 100%)}
+.rmap-arcs{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.rmap-arcs path{fill:none;stroke:rgba(251,100,20,.75);stroke-width:1.4;vector-effect:non-scaling-stroke;stroke-dasharray:3 6;animation:netFlow 1.6s linear infinite}
+.pin{position:absolute;width:0;height:0;z-index:2}
+.pin > i{position:absolute;left:-6px;top:-6px;width:12px;height:12px;border-radius:50%;background:#fff;box-shadow:0 0 0 4px rgba(124,196,255,.25)}
+.pin > i::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1.5px solid rgba(124,196,255,.8);animation:pinPulse 2.2s ease-out infinite;animation-delay:var(--d,0s)}
+@keyframes pinPulse{from{transform:scale(.5);opacity:1}to{transform:scale(2.2);opacity:0}}
+.pin.hq > i{background:#fb6414;box-shadow:0 0 0 5px rgba(251,100,20,.25)}
+.pin.hq > i::after{border-color:rgba(251,100,20,.8)}
+.pchip{position:absolute;right:14px;top:-34px;white-space:nowrap;font-size:11.5px;font-weight:600;padding:4px 9px;border-radius:99px;background:#fb6414;color:#fff;box-shadow:0 8px 20px rgba(251,100,20,.35)}
+.pin > s{position:absolute;left:-.5px;width:1px;background:linear-gradient(rgba(255,255,255,.7),rgba(255,255,255,.2));text-decoration:none}
+.pin.up > s{bottom:6px;height:34px}.pin.down > s{top:6px;height:34px}
+.rcard{position:absolute;display:flex;align-items:center;gap:10px;background:var(--cream);color:var(--ink);border-radius:8px;padding:9px 12px;box-shadow:0 18px 40px rgba(0,0,0,.35);white-space:nowrap}
+.pin.up .rcard{bottom:40px;left:-22px}.pin.down .rcard{top:40px;left:-22px}
+.pin.r .rcard{left:auto;right:-22px}
+.rcard b{display:block;font-size:13px;font-weight:600}.rcard small{display:block;color:#6b7385;font-size:11px}
+.rcard .av{width:32px;height:32px;font-size:11px}
+.rcard .img{width:34px;height:34px;border-radius:6px;background:linear-gradient(135deg,#7ad7ff,#0a2b68)}
+.rcard em{font-style:normal;font-size:10.5px;font-weight:700;letter-spacing:.06em;color:#0a52c2;background:#e8f1ff;border-radius:4px;padding:2px 6px;margin-left:4px}
+.rmap .rcard,.rmap .pchip{opacity:0;transform:translateY(8px);transition:opacity .6s ease,transform .7s cubic-bezier(.22,1,.36,1);transition-delay:var(--d,0s)}
+.res-top .rmap.in .rcard,.res-top .rmap.in .pchip{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rmap .rcard,.rmap .pchip{opacity:1;transform:none}.rmap-arcs path{animation:none}}
+@media (max-width:1024px){.rmap{width:100%;margin:56px 0 24px}.pin.up.r .rcard{right:auto;left:-14px;bottom:auto;top:40px}.pin.up.r > s{bottom:auto;top:6px}}
+@media (max-width:734px){
+  .rmap{width:128%;margin:64px 0 40px -14%}
+  .pin.up.r > s{bottom:auto;top:6px}
+  .pin.up.r .rcard{bottom:auto;top:28px}
+  .pin.up:not(.r) .rcard{left:-60px}
+  .rcard{padding:7px 9px;gap:7px}.rcard b{font-size:11.5px}.rcard small{display:none}.rcard .av,.rcard .img{width:24px;height:24px;font-size:9px}.rcard em{display:none}
+  .pin.up > s,.pin.down > s{height:22px}.pin.up .rcard{bottom:28px}.pin.down .rcard{top:28px}
+  .pchip{font-size:10px}
+}

@@ -205,10 +205,10 @@ svg.i{width:18px;height:18px;flex:none}
 .plat{display:grid;grid-template-columns:278px minmax(0,1fr);gap:40px;margin-top:64px;align-items:start}
 .plat-side{position:sticky;top:96px}
 .plat-nav{display:flex;flex-direction:column}
-.plat-nav a{display:flex;align-items:center;gap:10px;padding:14px 10px;font-size:15.5px;font-weight:500;color:rgba(15,29,69,.6);text-decoration:none;border-bottom:1px solid var(--line);position:relative;transition:color .2s,padding .2s}
-.plat-nav a::before{content:"";width:10px;height:10px;border-radius:2px;background:var(--accent);box-shadow:inset 0 0 0 2px rgba(255,255,255,.55);display:none}
-.plat-nav a.on{color:var(--ink);padding-left:0}
-.plat-nav a.on::before{display:block}
+.plat-nav a{display:flex;align-items:center;gap:10px;padding:14px 10px;font-size:15.5px;font-weight:500;color:rgba(15,29,69,.6);text-decoration:none;border-bottom:1px solid var(--line);position:relative}
+.plat-nav a::before{content:"";width:10px;height:10px;border-radius:2px;background:var(--accent);box-shadow:inset 0 0 0 2px rgba(255,255,255,.55);display:block;opacity:0}
+.plat-nav a.on{color:var(--ink)}
+.plat-nav a.on::before{opacity:1}
 .plat-nav a.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--accent)}
 .side-cta{margin-top:24px;border-radius:12px;padding:28px 20px 22px;color:#fff;background:radial-gradient(circle at 115% 10%,transparent 0 40px,rgba(255,255,255,.07) 41px 42px,transparent 43px 60px,rgba(255,255,255,.07) 61px 62px,transparent 63px 80px,rgba(255,255,255,.07) 81px 82px,transparent 83px 100px,rgba(255,255,255,.07) 101px 102px,transparent 103px),linear-gradient(150deg,var(--dk1),var(--dk2) 70%);overflow:hidden}
 .side-cta h3{font-size:20px;line-height:1.2;letter-spacing:-.02em}
@@ -491,7 +491,7 @@ svg.i{width:18px;height:18px;flex:none}
 .rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
 .rv.in{opacity:1;transform:none}
 /* What we do cards: fade only, nothing inside slides */
-.pcard.rv{transform:none;transition:opacity .6s ease}
+.pcard.rv{opacity:1;transform:none;transition:none}
 .pcard *{animation:none}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}

@@ -490,6 +490,9 @@ svg.i{width:18px;height:18px;flex:none}
 /* reveal */
 .rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
 .rv.in{opacity:1;transform:none}
+/* What we do cards: fade only, nothing inside slides */
+.pcard.rv{transform:none;transition:opacity .6s ease}
+.pcard *{animation:none}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none !important;transition:none !important}

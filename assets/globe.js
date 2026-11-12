@@ -6,7 +6,7 @@ window.__LAND=[82.7,-29.2,82.5,-81.7,82.2,-49.3,81.7,-69.3,81.5,-36.9,81.3,-89.4
   var land = window.__LAND || [];
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var RAD = Math.PI / 180;
-  var TILT = -18 * RAD;               // looking slightly from the north
+  var TILT_REST = -18, tiltDeg = TILT_REST, TILT = TILT_REST * RAD;   // looking slightly from the north
   var HUB = { lat: 12.97, lon: 77.59, label: 'Bengaluru' };
   var REG = [
     { lat: 40.7, lon: -74.0, label: 'North America' },
@@ -50,9 +50,9 @@ window.__LAND=[82.7,-29.2,82.5,-81.7,82.2,-49.3,81.7,-69.3,81.5,-36.9,81.3,-89.4
   }
   var ARCS = REG.map(function (r, i) { return { pts: arcPts(HUB, r, 64), off: i * 0.27 }; });
 
-  function draw(t) {
-    // sway between the Americas and Asia (skips the empty Pacific); starts on India
-    var rot = -(20 + 95 * Math.sin(t * 2 * Math.PI / 44000 + 0.554));
+  function draw(t, center) {
+    var rot = -center;
+    TILT = tiltDeg * RAD;
     ctx.clearRect(0, 0, W, H);
 
     // halo + sphere
@@ -125,16 +125,67 @@ window.__LAND=[82.7,-29.2,82.5,-81.7,82.2,-49.3,81.7,-69.3,81.5,-36.9,81.3,-89.4
   }
   function round(x, y, w, h, r) { ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); }
 
+  // ---- motion: auto-sway between the Americas and Asia (skips the empty Pacific),
+  // plus click/touch-and-drag to spin with inertia; resumes swaying from wherever it is let go
+  var SWAY_MID = 20, SWAY_AMP = 95, SWAY_SPEED = 2 * Math.PI / 44000;
+  var phase = 0.554, offset = 0, center = SWAY_MID + SWAY_AMP * Math.sin(phase);
+  var vel = 0, dragging = false, lastX = 0, lastY = 0, lastT = 0, dirty = true;
+
+  function resync() {
+    center = ((center - SWAY_MID + 180) % 360 + 360) % 360 - 180 + SWAY_MID;
+    var sn = Math.max(-1, Math.min(1, (center - SWAY_MID) / SWAY_AMP));
+    phase = Math.asin(sn);
+    if (vel !== 0 && (vel > 0) !== (Math.cos(phase) > 0)) phase = Math.PI - phase;  // keep going the way it was flung
+    offset = center - (SWAY_MID + SWAY_AMP * Math.sin(phase));
+    vel = 0;
+  }
+  function step(dt) {
+    if (dragging) return;
+    if (Math.abs(vel) > 0.004) {                   // coasting after a fling
+      center += vel * dt; vel *= Math.pow(0.9965, dt); dirty = true;
+      if (Math.abs(vel) <= 0.004) resync();
+    } else if (!reduce) {
+      phase += SWAY_SPEED * dt; offset *= Math.pow(0.9992, dt);
+      center = SWAY_MID + SWAY_AMP * Math.sin(phase) + offset; dirty = true;
+    }
+    if (Math.abs(tiltDeg - TILT_REST) > 0.05) { tiltDeg += (TILT_REST - tiltDeg) * Math.min(1, dt * 0.004); dirty = true; }
+  }
+
+  function onSphere(e) { var r = cv.getBoundingClientRect(); return Math.hypot(e.clientX - r.left - cx, e.clientY - r.top - cy) < R * 1.08; }
+  cv.addEventListener('pointerdown', function (e) {
+    if (!onSphere(e) || (e.pointerType === 'mouse' && e.button !== 0)) return;
+    dragging = true; vel = 0; lastX = e.clientX; lastY = e.clientY; lastT = performance.now();
+    cv.setPointerCapture(e.pointerId); cv.classList.add('grabbing'); e.preventDefault();
+  });
+  cv.addEventListener('pointermove', function (e) {
+    if (!dragging) { cv.classList.toggle('grab', onSphere(e)); return; }
+    var now = performance.now(), dt = Math.max(1, now - lastT), k = 1 / RAD / R;   // degrees per pixel
+    var dLon = -(e.clientX - lastX) * k;
+    center += dLon; vel = vel * 0.6 + (dLon / dt) * 0.4;
+    if (e.pointerType === 'mouse') tiltDeg = Math.max(-50, Math.min(20, tiltDeg - (e.clientY - lastY) * k * 0.6));
+    lastX = e.clientX; lastY = e.clientY; lastT = now; dirty = true;
+  });
+  function release(e) {
+    if (!dragging) return;
+    dragging = false; cv.classList.remove('grabbing');
+    if (performance.now() - lastT > 80) vel = 0;   // held still before letting go: no fling
+    vel = Math.max(-0.6, Math.min(0.6, vel));
+    if (Math.abs(vel) <= 0.004) resync();
+  }
+  cv.addEventListener('pointerup', release);
+  cv.addEventListener('pointercancel', release);
+
   size();
-  window.addEventListener('resize', function () { size(); if (reduce) draw(0); });
-  if (reduce) { draw(0); return; }
-  var onScreen = true, t0 = performance.now(), paused = 0, lastStop = null;
+  window.addEventListener('resize', function () { size(); dirty = true; });
+  var onScreen = true, t = 0, prev = performance.now();
   if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { onScreen = e[0].isIntersecting; }).observe(cv);
   (function loop(now) {
+    var dt = Math.min(64, now - prev); prev = now;
     if (onScreen && !document.hidden) {
-      if (lastStop !== null) { paused += now - lastStop; lastStop = null; }
-      draw(now - t0 - paused);
-    } else if (lastStop === null) lastStop = now;
+      step(dt);
+      if (!reduce) { t += dt; dirty = true; }
+      if (dirty) { draw(t, center); dirty = false; }
+    }
     requestAnimationFrame(loop);
   })(performance.now());
 })();

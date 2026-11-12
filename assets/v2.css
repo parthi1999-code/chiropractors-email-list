@@ -126,7 +126,9 @@ svg.i{width:18px;height:18px;flex:none}
 
 /* animated globe */
 .globe-wrap{position:absolute;right:-180px;top:-110px;width:620px;height:620px;z-index:0;pointer-events:none}
-.globe-wrap canvas{width:100%;height:100%;display:block}
+.globe-wrap canvas{width:100%;height:100%;display:block;pointer-events:auto;touch-action:pan-y;-webkit-user-select:none;user-select:none}
+.globe-wrap canvas.grab{cursor:grab}
+.globe-wrap canvas.grabbing{cursor:grabbing}
 /* product UI */
 .prod{position:relative;margin-top:96px;padding:0 0 0 0;max-width:1006px;margin-left:auto;margin-right:auto}
 .prod-shell{display:grid;grid-template-columns:58px minmax(0,1fr);gap:16px;position:relative}

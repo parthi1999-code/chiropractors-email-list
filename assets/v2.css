@@ -966,3 +966,14 @@ svg.i{width:18px;height:18px;flex:none}
   .fm-ui{min-width:140px;padding:14px}.fm-ui b{font-size:22px}
   .fm-reg{font-size:14px;padding:9px 14px}
 }
+
+/* ===== hero: full-banner animated background + product demo ===== */
+.hero-demo .fm-waves.on{opacity:.7}
+.hero-demo .hero-top{width:100%;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:64px;align-items:center}
+.hero-demo .hero-scrim{background:linear-gradient(90deg,rgba(4,16,51,.85) 0%,rgba(4,16,51,.45) 40%,rgba(4,16,51,.1) 70%),linear-gradient(180deg,rgba(4,16,51,.55) 0%,transparent 22%,transparent 72%,rgba(4,16,51,.85) 100%)}
+.hero-demo .hero-film-c{padding-bottom:40px}
+@media (max-width:1024px){
+  .hero-demo .hero-top{grid-template-columns:minmax(0,1fr);gap:0}
+  .hero-demo .hero-film-c{padding-bottom:20px}
+  .hero-demo .hero-scrim{background:linear-gradient(180deg,rgba(4,16,51,.85) 0%,rgba(4,16,51,.5) 45%,rgba(4,16,51,.75) 100%)}
+}

@@ -1,5 +1,13 @@
 (function () {
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Smooth (eased) scrolling for mouse wheel and anchor links; touch keeps native scrolling
+  var lenis = null;
+  if (!reduce && window.Lenis) {
+    lenis = new window.Lenis({ duration: 1.15, easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); }, smoothWheel: true, anchors: { offset: -84 } });
+    window.lenis = lenis;
+    (function raf(t) { lenis.raf(t); requestAnimationFrame(raf); })(performance.now());
+  }
   var hdr = document.getElementById('hdr');
   var burger = hdr.querySelector('.burger');
 
@@ -14,6 +22,7 @@
     burger.setAttribute('aria-expanded', open);
     burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     document.body.style.overflow = open ? 'hidden' : '';
+    if (lenis) { if (open) lenis.stop(); else lenis.start(); }
   }
   burger.addEventListener('click', function () { setMenu(!hdr.classList.contains('menu-open')); });
   hdr.querySelectorAll('.nav a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); closeAll(); }); });

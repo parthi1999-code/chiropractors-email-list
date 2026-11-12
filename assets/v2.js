@@ -91,7 +91,7 @@
   // Industries: auto-advancing tabs with progress, pause on hover/focus
   var tabs = [].slice.call(document.querySelectorAll('.uc-tab'));
   var ucWrap = document.getElementById('industries');
-  var cur = 0, prog = 0, paused = false, visible = false, last = null, DUR = 6000;
+  var cur = 0, prog = 0, paused = false, visible = false, last = null, DUR = 5000;
   function selectTab(i, focus) {
     cur = (i + tabs.length) % tabs.length; prog = 0;
     tabs.forEach(function (t, j) {
@@ -110,10 +110,9 @@
       if (d) { e.preventDefault(); selectTab(cur + d, true); }
     });
   });
+  // Keeps sliding under the mouse; only pauses while a keyboard user is on a tab
   if (ucWrap) {
-    ucWrap.addEventListener('mouseenter', function () { paused = true; });
-    ucWrap.addEventListener('mouseleave', function () { paused = false; });
-    ucWrap.addEventListener('focusin', function () { paused = true; });
+    ucWrap.addEventListener('focusin', function (e) { paused = e.target.matches(':focus-visible'); });
     ucWrap.addEventListener('focusout', function () { paused = false; });
   }
 

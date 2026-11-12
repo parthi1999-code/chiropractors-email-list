@@ -862,25 +862,27 @@ svg.i{width:18px;height:18px;flex:none}
 .hero-film .fm{position:absolute;inset:0;z-index:0;overflow:hidden;container-type:size;pointer-events:none}
 .fm-grad{position:absolute;inset:-20%;background:radial-gradient(45% 40% at 78% 92%,rgba(251,100,20,.55),transparent 70%),radial-gradient(40% 45% at 30% 105%,rgba(255,154,99,.35),transparent 70%),radial-gradient(55% 60% at 70% 55%,rgba(2,161,233,.45),transparent 70%),linear-gradient(180deg,#041033 0%,#0a2b8f 42%,#2f62e0 70%,#8fa9f0 100%);animation:gradDrift 18s ease-in-out infinite alternate;will-change:transform}
 @keyframes gradDrift{from{transform:translate3d(-3%,0,0) scale(1)}to{transform:translate3d(3%,-4%,0) scale(1.06)}}
-.fm-waves{position:absolute;left:-10%;width:120%;top:30%;height:70%;opacity:0;transition:opacity 1s ease}
+.fm-waves{position:absolute;left:-10%;width:120%;top:30%;height:70%;opacity:0;transition:opacity 1.6s cubic-bezier(.65,0,.35,1)}
 .fm-waves g{fill:none;stroke:url(#fwg);stroke-width:1.1;animation:waveSlide 14s linear infinite alternate}
 @keyframes waveSlide{from{transform:translateX(-4%)}to{transform:translateX(4%)}}
-.fm:has(.f3.on) .fm-waves,.fm:has(.f4.on) .fm-waves{opacity:.9}
+.fm:has(.f3.on) .fm-waves,.fm:has(.f4.on) .fm-waves,.fm:has(.f6.on) .fm-waves{opacity:.75}
 .fm-dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.22) 1.1px,transparent 1.5px);background-size:16px 16px;-webkit-mask-image:radial-gradient(70% 70% at 60% 50%,transparent 55%,#000 100%);mask-image:radial-gradient(70% 70% at 60% 50%,transparent 55%,#000 100%);opacity:.55}
 /* scenes */
 .fm .fs{position:absolute;inset:0;opacity:0;visibility:hidden}
 .fm .fs.on,.fm .fs.out{opacity:1;visibility:visible}
-.fm .fs.out{animation:fsOut .7s ease both}
-@keyframes fsOut{to{opacity:0;filter:blur(14px)}}
+.fm .fs.on{animation:fsIn .9s cubic-bezier(.65,0,.35,1) both}
+.fm .fs.out{animation:fsOut .9s cubic-bezier(.65,0,.35,1) both}
+@keyframes fsIn{from{opacity:0;filter:blur(8px);transform:scale(1.015)}to{opacity:1;filter:none;transform:none}}
+@keyframes fsOut{from{opacity:1;filter:none;transform:none}to{opacity:0;filter:blur(10px);transform:scale(.985)}}
 .fm-giant{position:absolute;left:0;top:50%;margin:0;white-space:nowrap;font-family:var(--display);font-weight:600;font-size:24cqw;letter-spacing:-.05em;line-height:1;color:rgba(255,255,255,.07);-webkit-text-stroke:1.5px rgba(255,255,255,.32);transform:translate(40cqw,-55%)}
-.fm .fs.on .fm-giant{animation:giant 3.6s cubic-bezier(.25,.6,.3,1) both}
-@keyframes giant{from{opacity:0;filter:blur(20px);transform:translate(42cqw,-55%)}20%{opacity:1;filter:none}to{transform:translate(-6cqw,-55%)}}
+.fm .fs:is(.on,.out) .fm-giant{animation:giant 5s cubic-bezier(.37,0,.63,1) both}
+@keyframes giant{from{opacity:0;filter:blur(20px);transform:translate(42cqw,-55%)}22%{opacity:1;filter:none}to{opacity:1;transform:translate(-10cqw,-55%)}}
 .fm-giant.sm{font-size:19cqw;top:24%}
 .f5 .fm-giant{font-size:20cqw}
 /* glass prompt */
 .fm-stagebox{position:absolute;left:54%;top:40%;width:min(40cqw,560px)}
 .fm-pill{position:relative;display:flex;align-items:center;height:68px;padding:0 10px 0 28px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.38);box-shadow:0 30px 70px rgba(4,16,51,.35),inset 0 1px 0 rgba(255,255,255,.4);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);color:#fff;font-size:18px;opacity:0}
-.fm .fs.on .fm-pill{animation:pillIn .8s cubic-bezier(.2,.8,.2,1) .15s both}
+.fm .fs:is(.on,.out) .fm-pill{animation:pillIn 1s cubic-bezier(.22,1,.36,1) .2s both}
 @keyframes pillIn{from{opacity:0;transform:translateY(24px) scale(.94);filter:blur(8px)}to{opacity:1;transform:none;filter:none}}
 .fm-q{white-space:nowrap;overflow:hidden;color:rgba(255,255,255,.92)}
 .fm-q:empty::before{content:"Search 28M+ verified contacts…";color:rgba(255,255,255,.55)}
@@ -890,22 +892,22 @@ svg.i{width:18px;height:18px;flex:none}
 .fm-mic i{width:2.5px;border-radius:2px;background:rgba(255,255,255,.8);height:30%;animation:mic 1s ease-in-out infinite alternate}
 .fm-mic i:nth-child(2){animation-delay:.15s}.fm-mic i:nth-child(3){animation-delay:.3s}.fm-mic i:nth-child(4){animation-delay:.45s}.fm-mic i:nth-child(5){animation-delay:.6s}
 @keyframes mic{to{height:100%}}
-.fm-send{width:48px;height:48px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 35% 30%,#ffb27a,#fb6414);box-shadow:0 0 0 0 rgba(251,100,20,.6),0 8px 20px rgba(251,100,20,.45);transition:transform .2s}
+.fm-send{width:48px;height:48px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 35% 30%,#ffb27a,#fb6414);box-shadow:0 0 0 0 rgba(251,100,20,.6),0 8px 20px rgba(251,100,20,.45)}
 .fm-send svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-.fm .sent .fm-send{animation:sendPulse .6s ease both}
+.fm .sent .fm-send{animation:sendPulse .7s cubic-bezier(.65,0,.35,1) both}
 @keyframes sendPulse{30%{transform:scale(.85)}100%{transform:none;box-shadow:0 0 0 22px rgba(251,100,20,0),0 8px 20px rgba(251,100,20,.45)}}
 /* results under the prompt */
 .fm-res{margin-top:16px;display:flex;flex-direction:column;gap:10px}
 .fm-rc{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:14px;background:rgba(255,255,255,.9);color:#0f1d45;box-shadow:0 18px 40px rgba(4,16,51,.25);opacity:0;transform:translateY(14px)}
-.fm .sent .fm-rc{animation:rcUp .55s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(.2s + var(--i) * .13s)}
-@keyframes rcUp{to{opacity:1;transform:none}}
+.fm .sent .fm-rc{animation:rcUp .8s cubic-bezier(.22,1,.36,1) both;animation-delay:calc(.2s + var(--i) * .13s)}
+@keyframes rcUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 .fm-rc b{display:flex;align-items:center;gap:5px;font-size:15px;font-weight:600}
 .fm-rc small{display:block;font-size:13px;color:#64748b}
 .fm-tk{width:16px;height:16px}
 .fm-av{width:38px;height:38px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px}
 .fm-av.a1{background:linear-gradient(135deg,#ff9b6a,#fb6414)}.fm-av.a2{background:linear-gradient(135deg,#7ad7ff,#0075ff)}.fm-av.a3{background:linear-gradient(135deg,#a9c8ff,#0a2b68)}
 .fm-found{margin-top:16px;display:flex;align-items:center;gap:16px;padding:16px 20px;border-radius:18px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:#fff;opacity:0;transform:translateY(14px)}
-.fm .sent .fm-found{animation:rcUp .6s cubic-bezier(.2,.8,.2,1) .25s both}
+.fm .sent .fm-found{animation:rcUp .8s cubic-bezier(.22,1,.36,1) .25s both}
 .fm-found b{display:block;font-size:17px;font-weight:600}.fm-found small{color:rgba(255,255,255,.75);font-size:13.5px}
 .fm-ring{width:58px;height:58px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;position:relative}
 .fm-ring::before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(#fb6414 0 95%,rgba(255,255,255,.2) 0);-webkit-mask:radial-gradient(circle,transparent 22px,#000 23px);mask:radial-gradient(circle,transparent 22px,#000 23px)}
@@ -917,14 +919,14 @@ svg.i{width:18px;height:18px;flex:none}
 .fm-ui small{display:block;font-size:13px;color:rgba(255,255,255,.75)}.fm-ui b{display:block;font-family:var(--display);font-size:30px;font-weight:600;margin-top:4px}
 .fm-ui i{display:block;height:28px;margin-top:10px;border-radius:6px;background:linear-gradient(90deg,rgba(255,255,255,.35),rgba(255,255,255,.05))}
 .fm-ui.u1{left:50%;top:14%}.fm-ui.u2{left:76%;top:20%}.fm-ui.u3{left:62%;top:66%}.fm-ui.u4{left:84%;top:58%}
-.fm .fs.on .fm-ui{animation:uiIn 5s cubic-bezier(.2,.8,.2,1) both}
-.fm .fs.on .fm-ui.u2{animation-delay:.1s}.fm .fs.on .fm-ui.u3{animation-delay:.2s}.fm .fs.on .fm-ui.u4{animation-delay:.3s}
-@keyframes uiIn{0%{opacity:0;transform:translateY(40px) scale(.92)}20%{opacity:.75}100%{opacity:.75;transform:translateY(-12px)}}
+.fm .fs:is(.on,.out) .fm-ui{animation:uiIn 6s cubic-bezier(.22,1,.36,1) both}
+.fm .fs:is(.on,.out) .fm-ui.u2{animation-delay:.12s}.fm .fs:is(.on,.out) .fm-ui.u3{animation-delay:.24s}.fm .fs:is(.on,.out) .fm-ui.u4{animation-delay:.36s}
+@keyframes uiIn{0%{opacity:0;transform:translateY(40px) scale(.94)}25%{opacity:.75}100%{opacity:.75;transform:translateY(-16px)}}
 /* vertical services list */
 .fm-list{position:absolute;left:50%;top:50%;width:46cqw;height:min(54cqh,420px);transform:translateY(-50%);overflow:hidden;-webkit-mask-image:linear-gradient(transparent,#000 30%,#000 70%,transparent);mask-image:linear-gradient(transparent,#000 30%,#000 70%,transparent)}
 .fm-list ul{list-style:none;margin:0;padding:0;position:absolute;left:96px;right:0;top:50%}
 .fm-list li{height:88px;line-height:88px;margin-top:-44px;margin-bottom:44px;font-family:var(--display);font-size:clamp(34px,4.2cqw,58px);font-weight:500;letter-spacing:-.02em;color:rgba(255,255,255,.9);white-space:nowrap}
-.fm .f4.on .fm-list ul{animation:listRoll 4.4s cubic-bezier(.7,0,.3,1) both}
+.fm .f4:is(.on,.out) .fm-list ul{animation:listRoll 4.8s cubic-bezier(.65,0,.35,1) both}
 @keyframes listRoll{0%,14%{transform:translateY(0)}24%,38%{transform:translateY(-88px)}48%,62%{transform:translateY(-176px)}72%,86%{transform:translateY(-264px)}96%,100%{transform:translateY(-352px)}}
 .fm-band{position:absolute;left:0;right:0;top:50%;height:88px;margin-top:-44px;border-top:1px solid rgba(255,255,255,.35);border-bottom:1px solid rgba(255,255,255,.35);background:linear-gradient(90deg,rgba(255,255,255,.16),rgba(255,255,255,.02));backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .fm-bi{position:absolute;left:14px;top:50%;width:58px;height:58px;margin-top:-29px;border-radius:14px;background:linear-gradient(135deg,#ffb27a,#fb6414);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(251,100,20,.5)}
@@ -932,9 +934,9 @@ svg.i{width:18px;height:18px;flex:none}
 /* regions */
 .fm-reg{position:absolute;padding:12px 20px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#fff;font-weight:600;font-size:17px;opacity:0}
 .fm-reg.r0{left:56%;top:26%}.fm-reg.r1{left:80%;top:34%}.fm-reg.r2{left:62%;top:66%}.fm-reg.r3{left:84%;top:72%}
-.fm .f5.on .fm-reg{animation:regIn 3.6s cubic-bezier(.2,.8,.2,1) both}
-.fm .f5.on .fm-reg.r1{animation-delay:.15s}.fm .f5.on .fm-reg.r2{animation-delay:.3s}.fm .f5.on .fm-reg.r3{animation-delay:.45s}
-@keyframes regIn{0%{opacity:0;transform:translateY(30px) scale(.9)}25%{opacity:1;transform:none}100%{opacity:1;transform:translateY(-16px)}}
+.fm .f5:is(.on,.out) .fm-reg{animation:regIn 4.6s cubic-bezier(.22,1,.36,1) both}
+.fm .f5:is(.on,.out) .fm-reg.r1{animation-delay:.15s}.fm .f5:is(.on,.out) .fm-reg.r2{animation-delay:.3s}.fm .f5:is(.on,.out) .fm-reg.r3{animation-delay:.45s}
+@keyframes regIn{0%{opacity:0;transform:translateY(30px) scale(.94)}25%{opacity:1}100%{opacity:1;transform:translateY(-18px)}}
 /* end card */
 .fm-logo{position:absolute;left:62%;top:50%;width:min(30cqw,440px);transform:translate(-50%,-50%);opacity:0}
 .fm .f6.on .fm-logo{animation:logoIn 1s cubic-bezier(.2,.8,.2,1) both}
@@ -976,6 +978,12 @@ svg.i{width:18px;height:18px;flex:none}
   .fm-reg{font-size:14px;padding:9px 14px}
 }
 
+/* end scene: the product demo */
+.fm .fm-demo{position:absolute;left:52%;right:4%;top:50%;transform:translateY(-50%);padding:0;max-width:700px}
+.fm .f6:is(.on,.out) .fm-demo .prod{animation:demoIn 1.1s cubic-bezier(.22,1,.36,1) .15s both}
+@keyframes demoIn{from{opacity:0;transform:translateY(36px) scale(.97);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+@media all{.fm .fm-demo{left:24px;right:24px;top:auto;bottom:110px;transform:none;max-width:none}.hero-film-c{padding-bottom:500px}}
+@media all{.fm .fm-demo{left:16px;right:16px;bottom:96px}.hero-film-c{padding-bottom:470px}}
 /* ===== hero: full-banner animated background + product demo ===== */
 .hero-demo .fm-waves.on{opacity:.7}
 .hero-demo .hero-top{width:100%;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:64px;align-items:center}
@@ -1006,19 +1014,18 @@ html,body{width:390px;margin:0;overflow-x:hidden}</style>
 <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 </div></header>
 <main>
-<section class="hero hero-film hero-demo" id="top">
-<div class="fm" aria-hidden="true"><div class="fm-grad"></div><svg class="fm-waves on" viewBox="0 0 1800 700" preserveAspectRatio="none"><defs><linearGradient id="fwg" x1="0" x2="1"><stop offset="0" stop-color="#7cc4ff" stop-opacity="0"/><stop offset=".35" stop-color="#7cc4ff" stop-opacity=".55"/><stop offset=".7" stop-color="#ff9a63" stop-opacity=".45"/><stop offset="1" stop-color="#ff9a63" stop-opacity="0"/></linearGradient></defs><g><path d="M-200 300 C 200 150, 500 520, 900 330 S 1500 120, 2000 360"/><path d="M-200 309 C 200 164, 500 514, 900 335 S 1500 132, 2000 364"/><path d="M-200 318 C 200 178, 500 508, 900 340 S 1500 144, 2000 368"/><path d="M-200 327 C 200 192, 500 502, 900 345 S 1500 156, 2000 372"/><path d="M-200 336 C 200 206, 500 496, 900 350 S 1500 168, 2000 376"/><path d="M-200 345 C 200 220, 500 490, 900 355 S 1500 180, 2000 380"/><path d="M-200 354 C 200 234, 500 484, 900 360 S 1500 192, 2000 384"/><path d="M-200 363 C 200 248, 500 478, 900 365 S 1500 204, 2000 388"/><path d="M-200 372 C 200 262, 500 472, 900 370 S 1500 216, 2000 392"/><path d="M-200 381 C 200 276, 500 466, 900 375 S 1500 228, 2000 396"/><path d="M-200 390 C 200 290, 500 460, 900 380 S 1500 240, 2000 400"/><path d="M-200 399 C 200 304, 500 454, 900 385 S 1500 252, 2000 404"/><path d="M-200 408 C 200 318, 500 448, 900 390 S 1500 264, 2000 408"/><path d="M-200 417 C 200 332, 500 442, 900 395 S 1500 276, 2000 412"/><path d="M-200 426 C 200 346, 500 436, 900 400 S 1500 288, 2000 416"/><path d="M-200 435 C 200 360, 500 430, 900 405 S 1500 300, 2000 420"/><path d="M-200 444 C 200 374, 500 424, 900 410 S 1500 312, 2000 424"/><path d="M-200 453 C 200 388, 500 418, 900 415 S 1500 324, 2000 428"/><path d="M-200 462 C 200 402, 500 412, 900 420 S 1500 336, 2000 432"/><path d="M-200 471 C 200 416, 500 406, 900 425 S 1500 348, 2000 436"/><path d="M-200 480 C 200 430, 500 400, 900 430 S 1500 360, 2000 440"/><path d="M-200 489 C 200 444, 500 394, 900 435 S 1500 372, 2000 444"/><path d="M-200 498 C 200 458, 500 388, 900 440 S 1500 384, 2000 448"/><path d="M-200 507 C 200 472, 500 382, 900 445 S 1500 396, 2000 452"/><path d="M-200 516 C 200 486, 500 376, 900 450 S 1500 408, 2000 456"/><path d="M-200 525 C 200 500, 500 370, 900 455 S 1500 420, 2000 460"/></g></svg><div class="fm-dots"></div></div>
-<div class="hero-scrim" aria-hidden="true"></div>
-<div class="c hero-c hero-film-c">
-<div class="hero-top">
-<div class="hero-copy">
-<h1>Global B2B Growth Without Borders</h1>
-<p class="hero-p">Verified data, demand generation, SEO and specialist hiring for companies selling across North America, EMEA, APAC and LATAM. One partner, sourced in-region, compliant everywhere.</p>
-<div class="hero-ctas"><a class="btn btn-cream" href="#contact">Get Started<span class="tile"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="btn btn-dark" href="#platform">See How It Works</a></div>
-<div class="badges"><span><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>GDPR Compliant</span><i></i><span><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>CCPA Compliant</span></div>
-</div>
-<div class="hero-vis">
-<div class="prod s-search s-results s-ring s-profile" id="demo" aria-hidden="true">
+<section class="hero hero-film" id="top">
+<div class="fm static" id="fm" aria-hidden="true">
+<div class="fm-grad"></div>
+<svg class="fm-waves" viewBox="0 0 1800 700" preserveAspectRatio="none"><defs><linearGradient id="fwg" x1="0" x2="1"><stop offset="0" stop-color="#7cc4ff" stop-opacity="0"/><stop offset=".35" stop-color="#7cc4ff" stop-opacity=".55"/><stop offset=".7" stop-color="#ff9a63" stop-opacity=".45"/><stop offset="1" stop-color="#ff9a63" stop-opacity="0"/></linearGradient></defs><g><path d="M-200 300 C 200 150, 500 520, 900 330 S 1500 120, 2000 360"/><path d="M-200 309 C 200 164, 500 514, 900 335 S 1500 132, 2000 364"/><path d="M-200 318 C 200 178, 500 508, 900 340 S 1500 144, 2000 368"/><path d="M-200 327 C 200 192, 500 502, 900 345 S 1500 156, 2000 372"/><path d="M-200 336 C 200 206, 500 496, 900 350 S 1500 168, 2000 376"/><path d="M-200 345 C 200 220, 500 490, 900 355 S 1500 180, 2000 380"/><path d="M-200 354 C 200 234, 500 484, 900 360 S 1500 192, 2000 384"/><path d="M-200 363 C 200 248, 500 478, 900 365 S 1500 204, 2000 388"/><path d="M-200 372 C 200 262, 500 472, 900 370 S 1500 216, 2000 392"/><path d="M-200 381 C 200 276, 500 466, 900 375 S 1500 228, 2000 396"/><path d="M-200 390 C 200 290, 500 460, 900 380 S 1500 240, 2000 400"/><path d="M-200 399 C 200 304, 500 454, 900 385 S 1500 252, 2000 404"/><path d="M-200 408 C 200 318, 500 448, 900 390 S 1500 264, 2000 408"/><path d="M-200 417 C 200 332, 500 442, 900 395 S 1500 276, 2000 412"/><path d="M-200 426 C 200 346, 500 436, 900 400 S 1500 288, 2000 416"/><path d="M-200 435 C 200 360, 500 430, 900 405 S 1500 300, 2000 420"/><path d="M-200 444 C 200 374, 500 424, 900 410 S 1500 312, 2000 424"/><path d="M-200 453 C 200 388, 500 418, 900 415 S 1500 324, 2000 428"/><path d="M-200 462 C 200 402, 500 412, 900 420 S 1500 336, 2000 432"/><path d="M-200 471 C 200 416, 500 406, 900 425 S 1500 348, 2000 436"/><path d="M-200 480 C 200 430, 500 400, 900 430 S 1500 360, 2000 440"/><path d="M-200 489 C 200 444, 500 394, 900 435 S 1500 372, 2000 444"/><path d="M-200 498 C 200 458, 500 388, 900 440 S 1500 384, 2000 448"/><path d="M-200 507 C 200 472, 500 382, 900 445 S 1500 396, 2000 452"/><path d="M-200 516 C 200 486, 500 376, 900 450 S 1500 408, 2000 456"/><path d="M-200 525 C 200 500, 500 370, 900 455 S 1500 420, 2000 460"/></g></svg>
+<div class="fm-dots"></div>
+<div class="fs f1" data-d="3200"><p class="fm-giant">Find buyers</p></div>
+<div class="fs f2 on sent" data-d="5000"><div class="fm-ui u1"><small>Reply rate</small><b>80%</b><i></i></div><div class="fm-ui u2"><small>Verified contacts</small><b>28M+</b><i></i></div><div class="fm-ui u3"><small>Organic visitors</small><b>+200%</b><i></i></div><div class="fm-ui u4"><small>Hiring cycle</small><b>90% faster</b><i></i></div><div class="fm-stagebox"><div class="fm-pill"><span class="fm-q q1">Find VP Sales in Germany</span><i class="fm-caret"></i><span class="fm-mic"><i></i><i></i><i></i><i></i><i></i></span><span class="fm-send"><svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span></div><div class="fm-res"><div class="fm-rc" style="--i:0"><span class="fm-av a1">MS</span><span><b>Marcus Sterling <svg class="fm-tk" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 1.8 3-.2.9 2.9 2.5 1.7-1 2.8 1 2.8-2.5 1.7-.9 2.9-3-.2L12 22l-2.4-1.8-3 .2-.9-2.9-2.5-1.7 1-2.8-1-2.8 2.5-1.7.9-2.9 3 .2z" fill="#3b8bff"/><path d="M8.5 12l2.5 2.5 4.5-5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></b><small>VP Sales · Berlin</small></span></div><div class="fm-rc" style="--i:1"><span class="fm-av a3">AL</span><span><b>Anna Lind <svg class="fm-tk" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 1.8 3-.2.9 2.9 2.5 1.7-1 2.8 1 2.8-2.5 1.7-.9 2.9-3-.2L12 22l-2.4-1.8-3 .2-.9-2.9-2.5-1.7 1-2.8-1-2.8 2.5-1.7.9-2.9 3 .2z" fill="#3b8bff"/><path d="M8.5 12l2.5 2.5 4.5-5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></b><small>VP Sales · Munich</small></span></div><div class="fm-rc" style="--i:2"><span class="fm-av a2">PS</span><span><b>Jonas Weber <svg class="fm-tk" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 1.8 3-.2.9 2.9 2.5 1.7-1 2.8 1 2.8-2.5 1.7-.9 2.9-3-.2L12 22l-2.4-1.8-3 .2-.9-2.9-2.5-1.7 1-2.8-1-2.8 2.5-1.7.9-2.9 3 .2z" fill="#3b8bff"/><path d="M8.5 12l2.5 2.5 4.5-5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></b><small>VP Sales · Hamburg</small></span></div></div></div></div>
+<div class="fs f3" data-d="5000"><p class="fm-giant sm">Verified</p><div class="fm-stagebox"><div class="fm-pill"><span class="fm-q q2"></span><i class="fm-caret"></i><span class="fm-mic"><i></i><i></i><i></i><i></i><i></i></span><span class="fm-send"><svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span></div><div class="fm-found"><span class="fm-ring"><b class="fm-n">0</b></span><span><b>1,284 contacts found</b><small>Hospitals · USA · 95% verified</small></span></div></div></div>
+<div class="fs f4" data-d="4400"><div class="fm-list"><div class="fm-band"><span class="fm-bi"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span></div><ul><li>Verified data</li><li>Lead generation</li><li>SEO, AEO &amp; GEO</li><li>Recruitment</li><li>Websites</li><li>Verified data</li></ul></div></div>
+<div class="fs f5" data-d="3600"><p class="fm-giant">No borders</p><span class="fm-reg r0">North America</span><span class="fm-reg r1">EMEA</span><span class="fm-reg r2">APAC</span><span class="fm-reg r3">LATAM</span></div>
+<div class="fs f6" data-d="11000"><div class="hero-vis fm-demo">
+<div class="prod s-search s-results s-ring s-profile" id="demo" data-manual aria-hidden="true">
 <div class="prod-shell">
 <div class="rail"><span class="tl"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></span><div class="stack"><span class="on"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.3c2.2.7 3.5 2.8 3.5 5.7"/></svg></span><span><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 21v-4h6v4M8 7h2M14 7h2M8 11h2M14 11h2"/></svg></span><span><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/></svg></span><span><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20V10M12 20V4M19 20v-7"/></svg></span><span><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg></span></div></div>
 <div class="table-card"><div class="sx-bar"><span class="sx-ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></span><span class="sx-input"><span class="sx-tags"><span class="sx-chip in">VP Sales</span><span class="sx-chip in">EMEA</span></span><span class="sx-typed"></span><i class="sx-caret"></i></span><span class="sx-go">Search</span></div><div class="th"><span>Decision makers</span><span>Contact info</span><span>Company</span><span>Export</span></div><div class="tr dm show ok lit hl"><div class="pp"><span class="av a1">MS</span><div><b>Marcus Sterling <span class="vt"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l2.4 1.8 3-.2.9 2.9 2.5 1.7-1 2.8 1 2.8-2.5 1.7-.9 2.9-3-.2L12 22l-2.4-1.8-3 .2-.9-2.9-2.5-1.7 1-2.8-1-2.8 2.5-1.7.9-2.9 3 .2z" fill="currentColor" stroke="none"/><path d="M8.5 12l2.5 2.5 4.5-5" stroke="#fff"/></svg></span></b><small>Senior Director, <span class="hl-tag">Sales</span></small></div></div>
@@ -1039,7 +1046,15 @@ html,body{width:390px;margin:0;overflow-x:hidden}</style>
 <div class="fl fl-toast"><span class="tick"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg></span><div><b>4 contacts exported</b><small>CSV ready · synced to your CRM</small></div></div>
 <div class="fl fl-ring"><span class="ring"><span class="ring-n">95%</span></span><div><b>Contacts enriched</b><small>Ready to export</small></div></div>
 </div>
+</div></div>
 </div>
+<div class="hero-scrim" aria-hidden="true"></div>
+<div class="c hero-c hero-film-c">
+<div class="hero-copy">
+<h1>Global B2B Growth Without Borders</h1>
+<p class="hero-p">Verified data, demand generation, SEO and specialist hiring for companies selling across North America, EMEA, APAC and LATAM. One partner, sourced in-region, compliant everywhere.</p>
+<div class="hero-ctas"><a class="btn btn-cream" href="#contact">Get Started<span class="tile"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="btn btn-dark" href="#platform">See How It Works</a></div>
+<div class="badges"><span><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>GDPR Compliant</span><i></i><span><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>CCPA Compliant</span></div>
 </div>
 </div>
 <div class="c hero-c hero-film-logos"><div class="logos" aria-label="Teams we work with"><span>AdventHealth</span><span>GE Healthcare</span><span>Pfizer</span><span>Innova</span><span>Wellpath</span><span>Pearson</span></div></div>

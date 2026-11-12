@@ -89,8 +89,14 @@
     at(t, function () { if (visible) run(); else running = false; });
   }
 
+  var manual = demo.hasAttribute('data-manual');
+  window.infDemo = {
+    play: function () { if (reduce) { finalState(); return; } visible = false; clearAll(); run(); },
+    stop: function () { clearAll(); running = false; }
+  };
   if (reduce) { finalState(); return; }
   reset();
+  if (manual) return;
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function (es) {
       visible = es[0].isIntersecting;

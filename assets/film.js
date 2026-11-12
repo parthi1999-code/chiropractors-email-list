@@ -28,6 +28,7 @@
       var end = typeInto(s.querySelector('.q1'), 'Find VP Sales in Germany', 650, 48);
       at(end + 250, function () { s.classList.add('sent'); });
     },
+    f6: function () { if (window.infDemo) window.infDemo.play(); },
     f3: function (s) {
       var end = typeInto(s.querySelector('.q2'), 'Hospital administrators in the US', 550, 42);
       at(end + 250, function () { s.classList.add('sent'); });
@@ -44,7 +45,7 @@
     if (hooks[name]) hooks[name](s);
     at(+s.getAttribute('data-d') || 3000, function () {
       s.classList.remove('on'); s.classList.add('out');
-      at(700, function () { s.classList.remove('out', 'sent'); });
+      at(950, function () { s.classList.remove('out', 'sent'); });
       idx = (i + 1) % scenes.length;
       if (visible && !document.hidden) show(idx); else running = false;
     });
@@ -62,7 +63,7 @@
   }
   start();
   document.addEventListener('visibilitychange', function () {
-    if (document.hidden) { stop(); scenes.forEach(function (x) { x.classList.remove('on', 'out', 'sent'); }); }
+    if (document.hidden) { stop(); if (window.infDemo) window.infDemo.stop(); scenes.forEach(function (x) { x.classList.remove('on', 'out', 'sent'); }); }
     else if (visible) start();
   });
 })();

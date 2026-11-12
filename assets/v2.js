@@ -175,4 +175,19 @@
       if (open) { f.classList.add('open'); this.setAttribute('aria-expanded', 'true'); }
     });
   });
+
+  // Results background video: load only when near the screen, pause when off it
+  var rv2 = document.querySelector('.res-video');
+  var saveData = navigator.connection && navigator.connection.saveData;
+  if (rv2 && !reduce && !saveData && hasIO) {
+    var rvio = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
+        if (en.isIntersecting) {
+          if (!rv2.src) { rv2.src = rv2.getAttribute('data-src'); rv2.addEventListener('playing', function () { rv2.classList.add('ready'); }, { once: true }); }
+          var pp = rv2.play(); if (pp && pp.catch) pp.catch(function () {});
+        } else if (rv2.src) rv2.pause();
+      });
+    }, { rootMargin: '300px 0px' });
+    rvio.observe(rv2);
+  }
 })();

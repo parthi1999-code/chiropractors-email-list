@@ -277,7 +277,12 @@ svg.i{width:18px;height:18px;flex:none}
 
 /* ================= results ================= */
 .results{position:relative;overflow:hidden;color:#fff;background:radial-gradient(900px 600px at 80% 20%,rgba(0,117,255,.18),transparent 60%),linear-gradient(180deg,var(--dk2),var(--dk3));padding:120px 0}
-.results .rings-bg{position:absolute;right:-140px;top:40px;width:820px;height:820px;opacity:.55;pointer-events:none}
+.results > .c{position:relative;z-index:1}
+/* flowing wave lines: the banner video from infinyxglobal.com, toned to sit behind text */
+.res-bg{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.res-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
+.res-video.ready{opacity:.9}
+.res-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,11,34,.82) 0%,rgba(5,11,34,.45) 45%,rgba(5,11,34,.15) 100%),linear-gradient(180deg,rgba(15,29,69,.55) 0%,transparent 30%,transparent 55%,rgba(5,11,34,.85) 100%)}
 .res-top{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px}
 .res-top .h2{margin-top:18px;max-width:420px;line-height:1.2}
 .big-num{font-family:var(--display);font-weight:500;letter-spacing:-.05em;line-height:1;color:var(--accent);margin-top:64px;display:flex;align-items:baseline}

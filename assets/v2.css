@@ -1079,3 +1079,9 @@ svg.i{width:18px;height:18px;flex:none}
 .deck.static .bigpill{display:none}
 .deck.static .sok{stroke-dashoffset:0}
 @media (max-width:1024px){.hero-deck .deck-wrap{justify-content:center;padding-top:36px}.hero-deck .hero-film-c{padding-bottom:40px}}
+/* banner heading: always three lines */
+@media (min-width:1025px){.hero-deck .hero-top{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.hero-deck h1{font-size:clamp(40px,4.4vw,78px);max-width:none}
+.hero-deck .h1l{display:block;white-space:nowrap}
+@media (max-width:1024px){.hero-deck h1{font-size:clamp(38px,7.4vw,64px)}}
+@media (max-width:380px){.hero-deck .h1l{white-space:normal}}

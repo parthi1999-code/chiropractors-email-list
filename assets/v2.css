@@ -119,11 +119,14 @@ svg.i{width:18px;height:18px;flex:none}
 .sq{position:absolute;width:12px;height:12px;border-radius:2px;border:2px solid rgba(255,255,255,.9)}
 .sq.s1{left:150px;top:140px;background:#ff9900}.sq.s2{left:220px;top:184px;background:#fb6414}.sq.s3{left:316px;top:168px;background:#7ee08a}.sq.s4{left:170px;top:212px;background:#c9b8ff}
 @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-.logos{position:absolute;right:0;top:248px;display:grid;grid-template-columns:repeat(3,128px);z-index:1}
+.logos{position:absolute;right:0;top:470px;display:grid;grid-template-columns:repeat(3,128px);z-index:1}
 .logos span{height:48px;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:15.5px;letter-spacing:-.01em;color:rgba(255,255,255,.62);border-right:1px dashed rgba(255,255,255,.18);border-bottom:1px dashed rgba(255,255,255,.18)}
 .logos span:nth-child(3n){border-right:0}
 .logos span:nth-last-child(-n+3){border-bottom:0}
 
+/* animated globe */
+.globe-wrap{position:absolute;right:-180px;top:-110px;width:620px;height:620px;z-index:0;pointer-events:none}
+.globe-wrap canvas{width:100%;height:100%;display:block}
 /* product UI */
 .prod{position:relative;margin-top:96px;padding:0 0 0 0;max-width:1006px;margin-left:auto;margin-right:auto}
 .prod-shell{display:grid;grid-template-columns:58px minmax(0,1fr);gap:16px;position:relative}
@@ -491,6 +494,7 @@ svg.i{width:18px;height:18px;flex:none}
   .hdr.menu-open .dd-panel.wide > div + div{margin-top:16px}
   .hero-top{min-height:0}
   .map{position:relative;right:auto;top:auto;width:760px;height:560px;left:50%;margin:10px 0 -250px -250px;opacity:1;transform:scale(.55);transform-origin:250px 0}
+  .globe-wrap{position:relative;right:auto;top:auto;width:min(100%,460px);height:auto;aspect-ratio:1;margin:24px auto 0}
   .logos{position:relative;right:auto;top:auto;margin:10px auto 0;grid-template-columns:repeat(3,minmax(0,1fr));max-width:420px}
   .prod{margin-top:56px}
   .fl-search,.fl-co{display:none}

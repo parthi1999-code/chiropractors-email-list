@@ -1088,8 +1088,8 @@ svg.i{width:18px;height:18px;flex:none}
 
 /* ===== results: in-region coverage map (replaces floating cards) ===== */
 .res-top{align-items:center}
-.rmap{position:relative;width:140%;aspect-ratio:1425/585;margin:70px 0 50px 0}
-.rmap-dots{position:absolute;inset:0;width:100%;height:100%;-webkit-mask-image:radial-gradient(75% 90% at 55% 50%,#000 55%,transparent 100%);mask-image:radial-gradient(75% 90% at 55% 50%,#000 55%,transparent 100%)}
+.rmap{position:relative;width:132%;aspect-ratio:1500/814;margin:30px 0 10px -6%}
+.rmap-dots{position:absolute;inset:0;width:100%;height:100%}
 .rmap-arcs{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .rmap-arcs path{fill:none;stroke:rgba(251,100,20,.75);stroke-width:1.4;vector-effect:non-scaling-stroke;stroke-dasharray:3 6;animation:netFlow 1.6s linear infinite}
 .pin{position:absolute;width:0;height:0;z-index:2}

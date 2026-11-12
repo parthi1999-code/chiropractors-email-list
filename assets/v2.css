@@ -674,3 +674,33 @@ svg.i{width:18px;height:18px;flex:none}
   .tq-body{font-size:16px}
   .tq figcaption{margin-top:28px;padding-top:20px}
 }
+
+/* ===== hero v3: copy left, live product demo right (globe removed) ===== */
+.hero-top{align-items:center}
+.hero-copy{padding-top:0}
+.hero-vis{display:block;position:relative;padding:28px 0 0}
+.hero-vis .prod{margin:0;max-width:none}
+.hero-vis .rail{display:none}
+.hero-vis .prod-shell{grid-template-columns:minmax(0,1fr)}
+.hero-vis .table-card{box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.hero-vis .table-card::after{height:56px}
+.hero-vis .sx-bar{display:flex;margin-bottom:10px}
+.hero-vis .fl-search,.hero-vis .fl-co{display:none}
+.hero-vis .fl-prof{right:-28px;top:auto;bottom:-34px}
+.hero-vis .fl-ring{right:118px;top:-26px}
+.hero-vis .fl-toast{left:-28px;bottom:-26px;margin-left:0}
+.hero-vis{padding-bottom:40px}
+.hero-copy .badges{justify-content:flex-start;margin:32px 0 0;padding:0}
+.hero > .hero-c .logos{position:relative;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));margin:72px 0 0;padding:28px 0 72px;border-top:1px dashed rgba(255,255,255,.14)}
+.hero > .hero-c .logos span{border:0;height:40px}
+@media (max-width:1180px){.hero-vis .fl-prof{right:-12px}.hero-vis .fl-toast{left:-12px}}
+@media (max-width:1024px){
+  .hero-vis{padding-top:40px}
+  .hero-copy .badges{margin-top:24px}
+  .hero > .hero-c .logos{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:48px;padding-bottom:56px}
+}
+@media (max-width:734px){
+  .hero-copy .badges{flex-wrap:wrap}
+  .hero-vis .fl-toast{left:8px;bottom:-20px}
+  .hero-vis .fl-prof{display:none}
+}

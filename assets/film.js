@@ -4,7 +4,7 @@
   if (!fm) return;
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var scenes = [].slice.call(fm.querySelectorAll('.fs'));
-  var timers = [], running = false, visible = true, idx = 0;
+  var timers = [], running = false, visible = true, idx = 0, done = false;
   function at(ms, fn) { timers.push(setTimeout(fn, ms)); }
   function stop() { timers.forEach(clearTimeout); timers = []; running = false; }
 
@@ -43,6 +43,7 @@
     s.classList.add('on');
     var name = s.className.match(/\bf\d\b/)[0];
     if (hooks[name]) hooks[name](s);
+    if (i === scenes.length - 1) { done = true; running = false; return; }   // last scene: the film ends and holds here
     at(+s.getAttribute('data-d') || 3000, function () {
       s.classList.remove('on'); s.classList.add('out');
       at(950, function () { s.classList.remove('out', 'sent'); });
@@ -50,12 +51,12 @@
       if (visible && !document.hidden) show(idx); else running = false;
     });
   }
-  function start() { if (!running) { running = true; show(idx); } }
+  function start() { if (!running && !done) { running = true; show(idx); } }
 
-  if (reduce) {
+  if (reduce) {                      // reduced motion: show the final frame only
     fm.classList.add('static');
-    var s = scenes[1]; s.classList.add('on', 'sent');
-    s.querySelector('.q1').textContent = 'Find VP Sales in Germany';
+    scenes[scenes.length - 1].classList.add('on');
+    if (window.infDemo) window.infDemo.play();
     return;
   }
   if ('IntersectionObserver' in window) {
@@ -63,6 +64,7 @@
   }
   start();
   document.addEventListener('visibilitychange', function () {
+    if (done) return;
     if (document.hidden) { stop(); if (window.infDemo) window.infDemo.stop(); scenes.forEach(function (x) { x.classList.remove('on', 'out', 'sent'); }); }
     else if (visible) start();
   });

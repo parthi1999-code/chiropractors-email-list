@@ -81,6 +81,7 @@
     t += 1300;
     at(t, function () { rows[0].classList.add('exporting'); });
     at(t + 280, function () { rows[0].classList.remove('exporting'); demo.classList.add('s-toast'); });
+    if (hold) { at(t + 300, function () { running = false; }); return; }   // film mode: stay on the final frame
     t += 2400;
     at(t, function () { demo.classList.remove('s-toast'); });
     t += 900;
@@ -89,9 +90,9 @@
     at(t, function () { if (visible) run(); else running = false; });
   }
 
-  var manual = demo.hasAttribute('data-manual');
+  var manual = demo.hasAttribute('data-manual'), hold = false;
   window.infDemo = {
-    play: function () { if (reduce) { finalState(); return; } visible = false; clearAll(); run(); },
+    play: function () { hold = true; if (reduce) { finalState(); demo.classList.add('s-toast'); return; } visible = false; clearAll(); run(); },
     stop: function () { clearAll(); running = false; }
   };
   if (reduce) { finalState(); return; }

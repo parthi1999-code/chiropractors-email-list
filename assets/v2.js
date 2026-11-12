@@ -101,12 +101,30 @@
   var tabs = [].slice.call(document.querySelectorAll('.uc-tab'));
   var ucWrap = document.getElementById('industries');
   var cur = 0, prog = 0, paused = false, visible = false, last = null, DUR = 5000;
-  function selectTab(i, focus) {
-    cur = (i + tabs.length) % tabs.length; prog = 0;
+  var ucStage = document.querySelector('.uc-stage');
+  function selectTab(i, focus, dir) {
+    var next = (i + tabs.length) % tabs.length;
+    if (next === cur && tabs[cur].getAttribute('aria-selected') === 'true') { prog = 0; return; }
+    // forward (auto-advance, or a tab to the right) slides right-to-left; a tab to the left slides back
+    var back = dir === -1 || (dir === undefined && next < cur);
+    var prevPanel = document.getElementById(tabs[cur].getAttribute('aria-controls'));
+    var nextPanel = document.getElementById(tabs[next].getAttribute('aria-controls'));
+    cur = next; prog = 0;
+    if (ucStage) {
+      // park the incoming panel on the correct side without animating, then slide both
+      [].forEach.call(ucStage.children, function (p) {
+        if (p !== prevPanel) { p.classList.add('no-anim'); p.classList.remove('is-out'); }
+      });
+      ucStage.classList.toggle('rev', back);
+      void ucStage.offsetWidth;
+      [].forEach.call(ucStage.children, function (p) { p.classList.remove('no-anim'); });
+      if (prevPanel !== nextPanel) prevPanel.classList.add('is-out');
+    }
     tabs.forEach(function (t, j) {
-      var on = j === cur;
+      var on = j === cur, p = document.getElementById(t.getAttribute('aria-controls'));
       t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1; t.style.setProperty('--p', '0%');
-      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+      p.setAttribute('data-on', on);
+      if (on) { p.removeAttribute('aria-hidden'); p.removeAttribute('inert'); } else { p.setAttribute('aria-hidden', 'true'); p.setAttribute('inert', ''); }
     });
     if (focus) tabs[cur].focus();
     var row = tabs[cur].parentNode;
@@ -116,7 +134,7 @@
     t.addEventListener('click', function () { selectTab(i); });
     t.addEventListener('keydown', function (e) {
       var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
-      if (d) { e.preventDefault(); selectTab(cur + d, true); }
+      if (d) { e.preventDefault(); selectTab(cur + d, true, d); }
     });
   });
   // Keeps sliding under the mouse; only pauses while a keyboard user is on a tab
@@ -163,7 +181,7 @@
       var dt = ts - last; last = ts;
       if (tabs.length && visible && !paused && !document.hidden) {
         prog += dt / DUR;
-        if (prog >= 1) selectTab(cur + 1);
+        if (prog >= 1) selectTab(cur + 1, false, 1);
         else tabs[cur].style.setProperty('--p', (prog * 100).toFixed(1) + '%');
       }
       if (cards.length && tvisible && !tpaused && !document.hidden) {

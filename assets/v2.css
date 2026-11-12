@@ -376,7 +376,17 @@ svg.i{width:18px;height:18px;flex:none}
 .uc-tab[aria-selected="true"]{color:var(--ink)}
 .uc-tab .prog{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:var(--accent)}
 .uc-tab[aria-selected="true"] .prog{width:var(--p,0%)}
-.uc-panel{display:grid;grid-template-columns:minmax(0,2.4fr) minmax(0,1fr);gap:16px;margin-top:24px;animation:fadeIn .45s ease}
+.uc-stage{display:grid;margin-top:24px;overflow:hidden}
+/* panels sit on top of each other; the incoming one slides in from the right while the old one slides out to the left */
+.uc-panel{grid-area:1/1;display:grid;grid-template-columns:minmax(0,2.4fr) minmax(0,1fr);gap:16px;transform:translateX(calc(100% + 24px));visibility:hidden;transition:transform .9s cubic-bezier(.65,0,.35,1),visibility 0s linear .9s}
+.uc-panel[data-on="true"]{transform:none;visibility:visible;transition:transform .9s cubic-bezier(.65,0,.35,1),visibility 0s}
+.uc-panel.is-out{transform:translateX(calc(-100% - 24px));visibility:visible;transition:transform .9s cubic-bezier(.65,0,.35,1),visibility 0s linear .9s}
+.uc-panel.no-anim{transition:none !important}
+.uc-stage.rev .uc-panel:not([data-on="true"]):not(.is-out){transform:translateX(calc(-100% - 24px))}
+.uc-stage.rev .uc-panel.is-out{transform:translateX(calc(100% + 24px))}
+.uc-panel[data-on="true"] .uc-img img{animation:ucZoom 1.4s cubic-bezier(.22,1,.36,1) both}
+@keyframes ucZoom{from{transform:scale(1.08)}to{transform:none}}
+@media (prefers-reduced-motion:reduce){.uc-panel,.uc-panel.is-out,.uc-panel[data-on="true"]{transition:none}}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .uc-img{position:relative;border-radius:8px;overflow:hidden;min-height:520px;background:var(--card)}
 .uc-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}

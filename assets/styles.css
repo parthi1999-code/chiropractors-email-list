@@ -602,3 +602,7 @@ section{position:relative}
   .ft-address p{font-size:14.5px}
 }
 @media (max-width:734px){.seg-spacer{height:8px !important}}
+/* real Infinyx logo */
+.logo .logo-img{height:40px;width:auto;display:block}
+.ft-logo .logo-img{height:52px;width:auto;display:block}
+@media (max-width:734px){.logo .logo-img{height:34px}}

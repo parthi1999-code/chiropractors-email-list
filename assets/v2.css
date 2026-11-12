@@ -582,3 +582,7 @@ svg.i{width:18px;height:18px;flex:none}
   .ftr-bot{flex-direction:column;gap:14px}
   .ftr-copy{text-align:left}
 }
+/* real Infinyx logo */
+.logo .logo-img{height:44px;width:auto;display:block}
+.ftr-brand .logo .logo-img{height:auto;width:100%;max-width:233px}
+@media (max-width:734px){.logo .logo-img{height:36px}.ftr-brand .logo .logo-img{height:auto;width:190px}}

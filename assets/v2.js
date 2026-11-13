@@ -158,8 +158,9 @@
     });
   }
   tdots.forEach(function (d, i) { d.addEventListener('click', function () { goT(i); }); });
-  document.getElementById('tprev').addEventListener('click', function () { goT(ti - 1); });
-  document.getElementById('tnext').addEventListener('click', function () { goT(ti + 1); });
+  var tPrev = document.getElementById('tprev'), tNext = document.getElementById('tnext');
+  if (tPrev) tPrev.addEventListener('click', function () { goT(ti - 1); });
+  if (tNext) tNext.addEventListener('click', function () { goT(ti + 1); });
   if (tWrap) {
     // keeps sliding under the mouse; only pauses while a keyboard user is on the controls
     tWrap.addEventListener('focusin', function (e) { tpaused = e.target.matches(':focus-visible'); });

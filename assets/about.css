@@ -1,7 +1,7 @@
 /* About page — Ampliz inner-page layout in the Infinyx system (loads after v2.css) */
 
 /* ---------- hero: centred, product visual, logo strip ---------- */
-.ab-hero{position:relative;isolation:isolate;overflow:hidden;color:#fff;background:radial-gradient(60% 50% at 50% 100%,rgba(0,117,255,.32),transparent 70%),radial-gradient(40% 35% at 85% 105%,rgba(251,100,20,.22),transparent 70%),linear-gradient(180deg,var(--dk1) 0%,var(--dk2) 40%,var(--dk3) 100%);padding:150px 0 0}
+.ab-hero{position:relative;isolation:isolate;overflow:hidden;color:#fff;background:radial-gradient(60% 34% at 50% 70%,rgba(0,117,255,.30),transparent 70%),radial-gradient(40% 26% at 85% 76%,rgba(251,100,20,.18),transparent 70%),linear-gradient(180deg,var(--dk1) 0%,var(--dk2) 40%,var(--dk3) 100%);padding:150px 0 0}
 .ab-hero-c{display:flex;flex-direction:column;align-items:center;text-align:center}
 .ab-pill{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);font-size:13.5px;color:rgba(255,255,255,.9)}
 .ab-pill svg{width:15px;height:15px;color:var(--accent)}
@@ -36,7 +36,7 @@
 .ab-logos img{height:34px;width:100%;object-fit:contain}
 
 /* ---------- facts marquee ---------- */
-.ab-facts{background:var(--dk3);padding:8px 0 72px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.ab-facts{position:relative;padding:0 0 72px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .ab-track{display:flex;gap:16px;width:max-content;animation:abMarq 38s linear infinite}
 .ab-facts:hover .ab-track{animation-play-state:paused}
 @keyframes abMarq{to{transform:translateX(calc(-50% - 8px))}}

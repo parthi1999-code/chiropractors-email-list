@@ -14,11 +14,14 @@ jobs:
             --reject-regex '(\?|/wp-content/|/wp-json/|/wp-includes/|/feed/|/xmlrpc|/comments/|/page/[0-9]+/$|/author/|/tag/|/category/)' \
             --reject '*.css,*.js,*.png,*.jpg,*.jpeg,*.webp,*.svg,*.gif,*.ico,*.woff,*.woff2,*.ttf,*.pdf,*.mp4' \
             https://infinyxglobal.com/ || true
-          find . -type f | sort > ../index.txt
+          for u in data-services data-services/global-b2b-data data-services/data-appending data-services/c-level-email-list data-services/technographic-data staffing-recruiting-services staffing-recruiting-services/contract-to-hire staffing-recruiting-services/permanent-hiring staffing-recruiting-services/leadership-hiring terms-and-conditions free-sample; do
+            mkdir -p "$u"; curl -sL -A "Mozilla/5.0 Chrome/124" -o "$u/index.html" -w "$u %{http_code} %{url_effective}\n" "https://infinyxglobal.com/$u/" | tee -a ../status.txt
+          done
+          find . -type f | sort > ../index.txt; touch ../status.txt
           wc -l ../index.txt
       - name: Push snapshot to the live-snapshot branch
         run: |
-          git init -q snap && mv live index.txt snap/ && cd snap
+          git init -q snap && mv live index.txt status.txt snap/ && cd snap
           git config user.name github-actions && git config user.email github-actions@users.noreply.github.com
           git add -A && git commit -qm "Live site snapshot"
           git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" HEAD:refs/heads/live-snapshot

@@ -1,0 +1,28 @@
+name: Fetch live site images
+on:
+  workflow_dispatch:
+    inputs:
+      urls:
+        description: Space-separated image URLs from infinyxglobal.com
+        required: true
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download images
+        env:
+          URLS: ${{ inputs.urls }}
+        run: |
+          mkdir -p img && cd img
+          for u in $URLS; do
+            case "$u" in https://infinyxglobal.com/*|https://www.infinyxglobal.com/*) curl -sfL -A "Mozilla/5.0 Chrome/124" -O "$u" || echo "fail $u";; esac
+          done
+          ls -la
+      - name: Push to the live-assets branch
+        run: |
+          cd img
+          git init -q . && git config user.name github-actions && git config user.email github-actions@users.noreply.github.com
+          git add -A && git commit -qm "Live site images"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" HEAD:refs/heads/live-assets

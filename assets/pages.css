@@ -381,3 +381,4 @@ body.page-light .hdr{background:rgba(10,30,80,.97);box-shadow:0 1px 0 rgba(255,2
 .bl-feat .img img{object-position:left center}
 .bl-card .bl-meta span:nth-child(4),.bl-card .bl-meta span:nth-child(5){display:none}
 .ar-body td p,.ar-body th p{margin:0}
+.ls-check.warn svg{color:var(--accent)}

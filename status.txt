@@ -1,0 +1,11 @@
+data-services 404 https://infinyxglobal.com/data-services/
+data-services/global-b2b-data 404 https://infinyxglobal.com/data-services/global-b2b-data/
+data-services/data-appending 404 https://infinyxglobal.com/data-services/data-appending/
+data-services/c-level-email-list 404 https://infinyxglobal.com/data-services/c-level-email-list/
+data-services/technographic-data 404 https://infinyxglobal.com/data-services/technographic-data/
+staffing-recruiting-services 404 https://infinyxglobal.com/staffing-recruiting-services/
+staffing-recruiting-services/contract-to-hire 404 https://infinyxglobal.com/staffing-recruiting-services/contract-to-hire/
+staffing-recruiting-services/permanent-hiring 404 https://infinyxglobal.com/staffing-recruiting-services/permanent-hiring/
+staffing-recruiting-services/leadership-hiring 404 https://infinyxglobal.com/staffing-recruiting-services/leadership-hiring/
+terms-and-conditions 404 https://infinyxglobal.com/terms-and-conditions/
+free-sample 404 https://infinyxglobal.com/free-sample/

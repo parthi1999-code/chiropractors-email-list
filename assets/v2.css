@@ -1152,3 +1152,5 @@ svg.i{width:18px;height:18px;flex:none}
 @media (max-width:1180px){.ftr .ftr-g{grid-template-columns:repeat(5,minmax(0,1fr))}.ftr .ftr-brand{grid-column:1 / -1;flex-direction:row;align-items:center;flex-wrap:wrap;gap:16px 32px;padding:0 0 12px}.ftr-tag{max-width:380px}.ftr .soc{margin:0 0 0 auto}}
 @media (max-width:900px){.ftr .ftr-g{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:734px){.ftr{padding-top:56px}.ftr .ftr-g{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 20px}.ftr .ftr-brand{flex-direction:column;align-items:flex-start}.ftr .soc{margin:0}.ftr .ftr-bot{margin-top:48px}.ftr-contact{flex-direction:column;gap:12px}.ftr-legalrow{flex-direction:column-reverse;align-items:flex-start}}
+.ftr h5{white-space:normal;line-height:1.45;min-height:2.9em}
+@media (max-width:734px){.ftr h5{min-height:0}}

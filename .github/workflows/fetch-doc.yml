@@ -1,0 +1,27 @@
+name: Fetch Google Doc content
+on:
+  workflow_dispatch:
+    inputs:
+      doc:
+        description: Google Doc id (shared as anyone with the link)
+        required: true
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Export the doc
+        env:
+          DOC: ${{ inputs.doc }}
+        run: |
+          case "$DOC" in *[!A-Za-z0-9_-]*) echo "bad id"; exit 1;; esac
+          mkdir -p out && cd out
+          for f in txt html; do curl -sfL -o "doc.$f" "https://docs.google.com/document/d/$DOC/export?format=$f" || echo "fail $f"; done
+          ls -la
+      - name: Push to the doc-snapshot branch
+        run: |
+          cd out
+          git init -q . && git config user.name github-actions && git config user.email github-actions@users.noreply.github.com
+          git add -A && git commit -qm "Doc export"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" HEAD:refs/heads/doc-snapshot

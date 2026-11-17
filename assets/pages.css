@@ -216,7 +216,7 @@ a.ct-way:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.1
 .ct-f textarea{min-height:110px;resize:vertical}
 .ct-f input:focus,.ct-f select:focus,.ct-f textarea:focus{border-color:var(--blue);background:#fff;box-shadow:0 0 0 3px rgba(0,117,255,.14)}
 .ct-chips{display:flex;flex-wrap:wrap;gap:8px}
-.ct-chips label{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;padding:9px 13px;border-radius:999px;border:1px solid var(--line);background:#fff;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.ct-chips label{position:relative;display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;padding:9px 13px;border-radius:999px;border:1px solid var(--line);background:#fff;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
 .ct-chips input{position:absolute;opacity:0;pointer-events:none}
 .ct-chips label:has(input:checked){background:var(--dk1);border-color:var(--dk1);color:#fff}
 .ct-chips label:has(input:focus-visible){box-shadow:0 0 0 3px rgba(0,117,255,.3)}
@@ -382,3 +382,19 @@ body.page-light .hdr{background:rgba(10,30,80,.97);box-shadow:0 1px 0 rgba(255,2
 .bl-card .bl-meta span:nth-child(4),.bl-card .bl-meta span:nth-child(5){display:none}
 .ar-body td p,.ar-body th p{margin:0}
 .ls-check.warn svg{color:var(--accent)}
+/* hematologist page: record contents, setting tags, outreach tips */
+.hm-rec{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:16px;margin-top:56px}
+.hm-box{background:#fff;border:1px solid var(--line);border-radius:14px;padding:30px}
+.hm-box h3{font-family:var(--display);font-weight:500;font-size:20px;line-height:1.3;letter-spacing:-.01em;margin:0}
+.hm-box > p{margin:8px 0 20px;font-size:15px;line-height:1.6;color:var(--ink-2)}
+.hm-box .ls-check{padding:14px 16px;font-size:14.5px}
+.hm-tags{display:flex;flex-wrap:wrap;gap:10px}
+.hm-tag{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:var(--card);font-size:14.5px;font-weight:500;color:var(--ink)}
+.hm-tag svg{width:16px;height:16px;color:var(--accent)}
+.hm-tips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:56px}
+.hm-tip{display:grid;grid-template-columns:42px minmax(0,1fr);gap:16px;padding:24px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08)}
+.hm-tip .pg-ic{background:rgba(251,100,20,.16);box-shadow:none;margin:0}
+.hm-tip b{display:block;font-family:var(--display);font-weight:500;font-size:18px;color:#fff}
+.hm-tip p{margin:8px 0 0;font-size:15px;line-height:1.6;color:rgba(255,255,255,.72)}
+@media (max-width:1024px){.hm-rec,.hm-tips{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:734px){.hm-box{padding:22px}.hm-box .ls-checks{grid-template-columns:minmax(0,1fr) !important}.hm-tip{grid-template-columns:minmax(0,1fr);gap:12px}.hm-tips,.hm-rec{margin-top:36px}}

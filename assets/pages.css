@@ -418,3 +418,24 @@ body.page-light .hdr{background:rgba(10,30,80,.97);box-shadow:0 1px 0 rgba(255,2
 .pg-dark + .aeo-band,.aeo-band + .pg-dark{margin-top:0}
 @media (max-width:1024px){.aeo-two{grid-template-columns:minmax(0,1fr);gap:32px}.aeo-notes{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:734px){.aeo-tldr{grid-template-columns:minmax(0,1fr);gap:12px;padding:20px}.aeo-tldr-tag{justify-self:start}.aeo-band{margin:48px 0}.aeo-foot{text-align:left}}
+/* data appending page */
+.da-tldr{align-items:start}
+.da-tldr > div > p{margin:0 !important}
+.da-list{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:10px}
+.da-list li{display:grid;grid-template-columns:18px minmax(0,1fr);gap:10px;font-size:15px;line-height:1.55;color:var(--ink-2)}
+.da-list svg{width:18px;height:18px;color:var(--green);margin-top:2px}
+.da-st{display:inline-block;font-size:12.5px;font-weight:600;padding:3px 10px;border-radius:999px;line-height:1.5}
+.da-st.keep{background:#eef1f7;color:#4b5568}.da-st.miss{background:#fff1e8;color:#c2410c}.da-st.old{background:#fff8db;color:#92600a}
+.da-link{color:var(--blue);font-weight:500;text-decoration:none}
+.da-link:hover{text-decoration:underline}
+.pg-prob .da-link{color:#7cc0ff}
+.da-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:48px}
+.da-stat{border:1px solid var(--line);border-radius:14px;padding:22px 24px;background:#fff;display:flex;flex-direction:column;gap:6px}
+.da-stat small{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.da-stat b{font-family:var(--display);font-size:clamp(32px,3.4vw,42px);font-weight:600;letter-spacing:-.02em;color:var(--ink);line-height:1.1}
+.da-stat span{font-size:14.5px;color:var(--ink-2)}
+.da-stat.on{background:linear-gradient(140deg,var(--dk1),var(--dk3));border-color:transparent}
+.da-stat.on small{color:rgba(255,255,255,.6)}.da-stat.on b{color:#fff}.da-stat.on span{color:rgba(255,255,255,.75)}
+.pg-table.da-ex tr:nth-last-child(-n+2) td{background:rgba(0,117,255,.04)}
+.da-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+@media (max-width:734px){.da-stats{grid-template-columns:minmax(0,1fr)}.da-stat{padding:18px 20px}}

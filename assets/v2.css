@@ -1192,3 +1192,6 @@ svg.i{width:18px;height:18px;flex:none}
 }
 @media (prefers-reduced-motion:reduce){.svc-g.on > .svc-sub{animation:none}}
 .pg-card[id]{scroll-margin-top:110px}
+/* no visible scrollbars on inner scroll areas (tables, tab rails); they still swipe and scroll */
+.pg-table-wrap,.ar-tablewrap,.plat-nav,.tq-people,.uc-tabs{scrollbar-width:none;-ms-overflow-style:none}
+.pg-table-wrap::-webkit-scrollbar,.ar-tablewrap::-webkit-scrollbar,.plat-nav::-webkit-scrollbar,.tq-people::-webkit-scrollbar,.uc-tabs::-webkit-scrollbar{display:none;width:0;height:0}

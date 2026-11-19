@@ -467,3 +467,14 @@ body.page-light .hdr{background:rgba(10,30,80,.97);box-shadow:0 1px 0 rgba(255,2
 .rn-crm span{font-size:13.5px;font-weight:500;padding:7px 12px;border-radius:8px;background:var(--cream);border:1px solid var(--line);color:var(--ink)}
 @media (max-width:1024px){.rn-glance{grid-template-columns:repeat(2,minmax(0,1fr))}.rn-glance .rn-gl.on{grid-column:1/-1}}
 @media (max-width:734px){.rn-glance,.rn-fields{grid-template-columns:minmax(0,1fr)}}
+/* C-level executive list page */
+.rn-glance.n6{grid-template-columns:repeat(3,minmax(0,1fr))}
+.rn-titles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:48px}
+.rn-title{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"t c" "n n";gap:4px 10px;align-items:baseline}
+.rn-title b{grid-area:t;font-family:var(--display);font-weight:600;font-size:22px;letter-spacing:-.01em;color:var(--ink)}
+.rn-title em{grid-area:c;font-style:normal;font-family:var(--display);font-weight:500;font-size:15px;color:var(--blue)}
+.rn-title span{grid-area:n;font-size:13.5px;line-height:1.45;color:var(--ink-2)}
+.rn-title:first-child{background:linear-gradient(140deg,var(--dk1),var(--dk3));border-color:transparent}
+.rn-title:first-child b{color:#fff}.rn-title:first-child em{color:#7cc0ff}.rn-title:first-child span{color:rgba(255,255,255,.72)}
+@media (max-width:1024px){.rn-glance.n6{grid-template-columns:repeat(2,minmax(0,1fr))}.rn-glance.n6 .rn-gl.on{grid-column:auto}.rn-titles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:734px){.rn-glance.n6,.rn-titles{grid-template-columns:minmax(0,1fr)}}

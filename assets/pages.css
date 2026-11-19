@@ -400,3 +400,21 @@ body.page-light .hdr{background:rgba(10,30,80,.97);box-shadow:0 1px 0 rgba(255,2
 
 /* featured post: cover sits centred on a navy panel that matches the cover background */
 @media (min-width:1025px){.bl-feat .img{aspect-ratio:auto;align-self:stretch;display:flex;align-items:center;background:linear-gradient(160deg,#0f1d45,#0a1638 45%,#050b22)}.bl-feat .img img{height:auto;aspect-ratio:1600/890}}
+/* AEO services page */
+.aeo-tldr{margin:40px auto 0;max-width:820px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;align-items:start;text-align:left;padding:22px 26px;border-radius:14px;background:var(--cream);border:1px solid var(--line)}
+.aeo-tldr-tag{font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:.06em;color:#fff;background:var(--accent);border-radius:7px;padding:5px 10px;line-height:1.3}
+.pg-intro .aeo-tldr p{margin:0;max-width:none;font-family:var(--body);font-size:16px;line-height:1.65;font-weight:400;letter-spacing:0;color:var(--ink)}
+.aeo-note{display:flex;gap:12px;align-items:flex-start;max-width:820px;margin:28px auto 0;font-size:15px;line-height:1.6;color:var(--ink-2)}
+.aeo-note svg{width:18px;height:18px;flex:none;margin-top:3px;color:var(--accent)}
+.aeo-notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:40px}
+.aeo-notes .aeo-note{margin:0;padding:20px 22px;border-radius:12px;background:var(--cream);max-width:none}
+.aeo-foot{max-width:760px;margin:36px auto 0;text-align:center;font-size:16px;line-height:1.65;color:var(--ink-2)}
+.aeo-two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:56px;align-items:start}
+.pg-table.aeo-vs{min-width:520px}
+.pg-table.aeo-vs th:nth-child(3){background:var(--dk1);color:#fff}
+.pg-table.aeo-vs td:nth-child(3){background:rgba(0,117,255,.04);color:var(--ink)}
+.aeo-band{margin:72px 0}
+.aeo-band-p{margin:8px 0 0;color:rgba(255,255,255,.72);font-size:15px;line-height:1.55;max-width:620px}
+.pg-dark + .aeo-band,.aeo-band + .pg-dark{margin-top:0}
+@media (max-width:1024px){.aeo-two{grid-template-columns:minmax(0,1fr);gap:32px}.aeo-notes{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:734px){.aeo-tldr{grid-template-columns:minmax(0,1fr);gap:12px;padding:20px}.aeo-tldr-tag{justify-self:start}.aeo-band{margin:48px 0}.aeo-foot{text-align:left}}

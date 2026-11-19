@@ -1154,3 +1154,8 @@ svg.i{width:18px;height:18px;flex:none}
 @media (max-width:734px){.ftr{padding-top:56px}.ftr .ftr-g{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 20px}.ftr .ftr-brand{flex-direction:column;align-items:flex-start}.ftr .soc{margin:0}.ftr .ftr-bot{margin-top:48px}.ftr-contact{flex-direction:column;gap:12px}.ftr-legalrow{flex-direction:column-reverse;align-items:flex-start}}
 .ftr h5{white-space:normal;line-height:1.45;min-height:2.9em}
 @media (max-width:734px){.ftr h5{min-height:0}}
+/* services menu: SEO | AEO + GEO | Lead generation */
+@media (min-width:1025px){.dd-panel.wide.mega{width:940px;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr);left:-130px}
+.dd-panel.mega .dd-col{display:flex;flex-direction:column;gap:18px}
+.dd-panel.mega > div + div{border-left:1px solid var(--line);padding-left:20px}}
+@media (max-width:1024px){.dd-panel.mega .dd-col > div + div{margin-top:16px}}

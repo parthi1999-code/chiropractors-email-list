@@ -1159,3 +1159,36 @@ svg.i{width:18px;height:18px;flex:none}
 .dd-panel.mega .dd-col{display:flex;flex-direction:column;gap:18px}
 .dd-panel.mega > div + div{border-left:1px solid var(--line);padding-left:20px}}
 @media (max-width:1024px){.dd-panel.mega .dd-col > div + div{margin-top:16px}}
+/* services menu: category rail (SEO / AEO / GEO / Lead generation) with a sub-panel that slides out */
+.svc-cat{display:flex;gap:12px;align-items:center;width:100%;padding:10px;border:0;border-radius:10px;background:none;color:var(--ink);font:inherit;text-align:left;cursor:pointer}
+.svc-cat b{display:block;font-size:14px;font-weight:600}
+.svc-cat small{display:block;font-size:12px;color:var(--muted);line-height:1.4;margin-top:2px}
+.svc-cat > span:nth-child(2){flex:1;min-width:0}
+.svc-chev{width:16px;height:16px;color:var(--muted);transition:transform .2s,color .2s;flex:none}
+.svc-g.on > .svc-cat{background:#fff;box-shadow:0 1px 2px rgba(15,29,69,.1)}
+.svc-g.on > .svc-cat .svc-chev{color:var(--accent)}
+.svc-h{margin:14px 0 6px !important}
+.svc-mini{padding:6px 10px}
+.svc-mini .dd-ic{width:24px;height:24px;border-radius:6px}
+.svc-mini .dd-ic svg{width:13px;height:13px}
+.svc-mini b{font-size:13px;font-weight:500}
+@keyframes svcIn{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:none}}
+@media (min-width:1025px){
+  .dd-panel.svc{width:820px;left:-130px;padding:0;display:block;min-height:340px}
+  .svc-rail{width:270px;padding:20px 14px 20px 20px;border-right:1px solid var(--line);min-height:340px;box-sizing:border-box}
+  .svc-rail > h6{padding-left:10px}
+  .svc-g + .svc-g{margin-top:4px}
+  .svc-sub{display:none;position:absolute;left:270px;top:0;right:0;bottom:0;padding:20px 22px;overflow:auto}
+  .svc-g.on > .svc-sub{display:block;animation:svcIn .22s ease-out}
+  .svc-g.on > .svc-cat .svc-chev{transform:translateX(3px)}
+}
+@media (max-width:1024px){
+  .svc-rail > h6{display:none}
+  .svc-cat{padding:12px 10px}
+  .svc-g.on > .svc-cat .svc-chev{transform:rotate(90deg)}
+  .svc-sub{display:none;padding:4px 0 10px 16px;margin-left:16px;border-left:1px solid var(--line)}
+  .svc-sub > h6{display:none}
+  .svc-g.on > .svc-sub{display:block;animation:svcIn .2s ease-out}
+}
+@media (prefers-reduced-motion:reduce){.svc-g.on > .svc-sub{animation:none}}
+.pg-card[id]{scroll-margin-top:110px}

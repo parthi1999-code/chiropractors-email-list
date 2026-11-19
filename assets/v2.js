@@ -226,3 +226,26 @@
     else new IntersectionObserver(function (es, o) { if (es[0].isIntersecting) { rmap.classList.add('in'); o.disconnect(); } }, { threshold: .35 }).observe(rmap);
   }
 })();
+
+/* Services menu: hover or focus a category (SEO / AEO / GEO / Lead generation) to slide out its services;
+   on touch and small screens the categories open and close like an accordion. */
+(function () {
+  var desk = window.matchMedia('(hover: hover) and (min-width: 1025px)');
+  [].forEach.call(document.querySelectorAll('.dd-panel.svc'), function (panel) {
+    var groups = [].slice.call(panel.querySelectorAll('.svc-g'));
+    function set(g, on) { g.classList.toggle('on', on); g.querySelector('.svc-cat').setAttribute('aria-expanded', on ? 'true' : 'false'); }
+    function only(g) { groups.forEach(function (x) { set(x, x === g); }); }
+    function ensureOne() { if (desk.matches && !groups.some(function (g) { return g.classList.contains('on'); })) only(groups[0]); }
+    ensureOne();
+    if (desk.addEventListener) desk.addEventListener('change', ensureOne);
+    groups.forEach(function (g) {
+      var b = g.querySelector('.svc-cat');
+      b.addEventListener('mouseenter', function () { if (desk.matches) only(g); });
+      b.addEventListener('focus', function () { if (desk.matches) only(g); });
+      b.addEventListener('click', function () {
+        if (desk.matches) only(g);
+        else set(g, !g.classList.contains('on'));
+      });
+    });
+  });
+})();

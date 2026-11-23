@@ -500,3 +500,35 @@ body.page-light .hdr{background:rgba(10,30,80,.97);box-shadow:0 1px 0 rgba(255,2
 .erp-own b{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-right:6px}
 @media (max-width:1024px){.erp-plats{grid-template-columns:repeat(2,minmax(0,1fr))}.erp-stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:734px){.erp-plats{grid-template-columns:minmax(0,1fr)}}
+/* CIO list page */
+.cio-regions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:32px}
+.cio-regions .rn-gl b{font-size:clamp(26px,2.4vw,32px)}
+.cio-sub{font-size:13.5px;color:var(--muted)}
+.rn-gl.on .cio-sub{color:rgba(255,255,255,.6)}
+.cio-upd{margin:12px 0 0;font-size:13px;color:var(--muted)}
+.pg-table.cio-cl td:last-child{font-family:var(--display);font-weight:500;color:var(--ink);text-align:right}
+.pg-table.cio-cl th:last-child{text-align:right}
+.cio-feats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:48px}
+.cio-feats .pg-prob{margin:0}
+.cio-mid{max-width:760px;margin:56px auto 0;text-align:center;font-size:17px;line-height:1.6;color:var(--ink)}
+.cio-adv{grid-template-columns:repeat(4,minmax(0,1fr));margin-top:48px}
+.cio-kb{display:block;font-family:var(--display);font-weight:500;font-size:18px;color:var(--ink);margin-bottom:14px}
+.cio-chips{justify-content:center;margin-top:40px}
+a.cio-chip{text-decoration:none;color:var(--ink);border:1px solid var(--line);background:#fff}
+a.cio-chip:hover{border-color:var(--accent)}
+a.cio-chip svg:last-child{width:14px;height:14px;color:var(--accent)}
+.cio-chip{background:#fff}
+.cio-form{background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:16px;box-shadow:0 20px 50px -30px rgba(15,29,69,.35)}
+.cio-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.cio-form label > span,.cio-form legend{display:block;font-size:13px;font-weight:500;color:var(--ink);margin-bottom:6px}
+.cio-form input[type=text],.cio-form input[type=email],.cio-form input[type=url]{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:10px;padding:12px 14px;font:inherit;font-size:15px;color:var(--ink);background:var(--cream)}
+.cio-form input:focus{outline:2px solid rgba(0,117,255,.35);border-color:var(--blue);background:#fff}
+.cio-form fieldset{border:0;padding:0;margin:0}
+.cio-uses{display:flex;flex-wrap:wrap;gap:8px}
+.cio-uses label{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--line);border-radius:999px;font-size:13.5px;cursor:pointer;background:#fff}
+.cio-uses label:has(input:checked){border-color:var(--blue);background:rgba(0,117,255,.06)}
+.cio-uses input{margin:0;accent-color:var(--blue)}
+.cio-uses label span{margin:0 !important;font-weight:400 !important;font-size:13.5px !important}
+.cio-form .btn{align-self:flex-start;border:0;cursor:pointer}
+@media (max-width:1024px){.cio-feats{grid-template-columns:minmax(0,1fr)}.cio-adv{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:734px){.cio-regions,.cio-row,.cio-adv{grid-template-columns:minmax(0,1fr)}.cio-form{padding:20px}}

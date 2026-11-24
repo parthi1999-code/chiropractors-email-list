@@ -249,3 +249,47 @@
     });
   });
 })();
+
+/* CTA hover setup: wrap each button's label so it can roll up, double the arrow so it can slide through,
+   and mark buttons that sit on dark backgrounds (their label turns white when the fill clears). */
+(function () {
+  function isDark(el) {
+    for (var n = el.parentElement; n && n !== document.documentElement; n = n.parentElement) {
+      var s = getComputedStyle(n);
+      if (s.backgroundImage && s.backgroundImage !== 'none' && /gradient/.test(s.backgroundImage)) {
+        var m = s.backgroundImage.match(/rgba?\(([^)]+)\)/);
+        if (m) { var c = m[1].split(',').map(parseFloat); return (0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]) < 140; }
+      }
+      var b = s.backgroundColor.match(/rgba?\(([^)]+)\)/);
+      if (b) {
+        var v = b[1].split(',').map(parseFloat);
+        if (v.length < 4 || v[3] > 0.5) return (0.2126 * v[0] + 0.7152 * v[1] + 0.0722 * v[2]) < 140;
+      }
+    }
+    return false;
+  }
+  [].forEach.call(document.querySelectorAll('.btn'), function (btn) {
+    if (btn.dataset.fx) return;
+    btn.dataset.fx = '1';
+    [].slice.call(btn.childNodes).forEach(function (node) {
+      if (node.nodeType !== 3 || !node.textContent.trim()) return;
+      var text = node.textContent.trim();
+      var roll = document.createElement('span');
+      roll.className = 'btn-roll';
+      var a = document.createElement('span'); a.textContent = text;
+      var b = document.createElement('span'); b.textContent = text; b.setAttribute('aria-hidden', 'true');
+      roll.appendChild(a); roll.appendChild(b);
+      btn.replaceChild(roll, node);
+    });
+    var svg = btn.querySelector('.tile > svg');
+    if (svg) {
+      var track = document.createElement('span');
+      track.className = 'tile-track';
+      svg.parentNode.replaceChild(track, svg);
+      track.appendChild(svg);
+      var copy = svg.cloneNode(true); copy.setAttribute('aria-hidden', 'true');
+      track.appendChild(copy);
+    }
+    if (btn.classList.contains('btn-cream') && (btn.closest('.hdr') || isDark(btn))) btn.classList.add('on-dark');
+  });
+})();

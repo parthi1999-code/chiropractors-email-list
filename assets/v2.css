@@ -1195,3 +1195,28 @@ svg.i{width:18px;height:18px;flex:none}
 /* no visible scrollbars on inner scroll areas (tables, tab rails); they still swipe and scroll */
 .pg-table-wrap,.ar-tablewrap,.plat-nav,.tq-people,.uc-tabs{scrollbar-width:none;-ms-overflow-style:none}
 .pg-table-wrap::-webkit-scrollbar,.ar-tablewrap::-webkit-scrollbar,.plat-nav::-webkit-scrollbar,.tq-people::-webkit-scrollbar,.uc-tabs::-webkit-scrollbar{display:none;width:0;height:0}
+/* CTA hover: fill clears to an underline, the label rolls up, the arrow slides through (v2.js adds the spans) */
+.btn{position:relative}
+.btn::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;border-radius:2px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .45s cubic-bezier(.65,0,.35,1);pointer-events:none}
+.btn-roll{display:inline-block;position:relative;overflow:hidden;vertical-align:middle;line-height:1.3}
+.btn-roll > span{display:block;transition:transform .5s cubic-bezier(.65,0,.35,1)}
+.btn-roll > span + span{position:absolute;left:0;top:100%}
+.tile{overflow:hidden;position:relative}
+.tile-track{position:relative;display:inline-flex;width:17px;height:17px}
+.tile-track svg{position:absolute;inset:0;transition:transform .5s cubic-bezier(.65,0,.35,1)}
+.tile-track svg + svg{transform:translateX(-220%)}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  .btn:hover::after{transform:scaleX(1);transform-origin:left}
+  .btn:hover .btn-roll > span{transform:translateY(-100%)}
+  .btn:hover .tile-track svg{transform:translateX(220%)}
+  .btn:hover .tile-track svg + svg{transform:translateX(0)}
+  .btn-cream:hover .tile{transform:none}
+  /* filled buttons clear to their outline on hover */
+  .btn-cream,.btn-ink{transition:background-color .45s cubic-bezier(.65,0,.35,1),color .45s,box-shadow .45s,transform .12s}
+  .btn-cream:hover{background:transparent;box-shadow:none;color:var(--ink)}
+  .btn-cream.on-dark:hover{color:#fff}
+  .btn-ink:hover{background:transparent;color:var(--ink)}
+  .btn-dark:hover{background:transparent}
+  .btn-line:hover{border-color:transparent}
+}
+@media (prefers-reduced-motion:reduce){.btn::after,.btn-roll > span,.tile-track svg{transition:none}}

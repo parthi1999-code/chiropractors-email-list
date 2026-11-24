@@ -532,3 +532,26 @@ a.cio-chip svg:last-child{width:14px;height:14px;color:var(--accent)}
 .cio-form .btn{align-self:flex-start;border:0;cursor:pointer}
 @media (max-width:1024px){.cio-feats{grid-template-columns:minmax(0,1fr)}.cio-adv{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:734px){.cio-regions,.cio-row,.cio-adv{grid-template-columns:minmax(0,1fr)}.cio-form{padding:20px}}
+/* cyber security users list */
+.cy-checks{margin-top:26px}
+.cy-checks .ls-check{background:var(--cream)}
+.cy-cats{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cy-cat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px;display:flex;flex-direction:column;gap:6px}
+.cy-cat b{font-family:var(--display);font-weight:600;font-size:17px;letter-spacing:-.01em;color:var(--ink)}
+.cy-cat > span{font-size:14px;line-height:1.5;color:var(--ink-2)}
+.cy-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:10px}
+.cy-tag{font-size:12.5px;line-height:1;padding:7px 10px;border-radius:999px;background:var(--cream);color:var(--ink);border:1px solid var(--line)}
+.cy-cap{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:4px}
+.cy-cap-mid{margin:56px 0 16px}
+.cy-regs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.cy-reg{border-radius:12px;padding:22px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:#fff;display:flex;flex-direction:column;gap:12px}
+.cy-reg-top{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.cy-reg-top b{font-family:var(--display);font-weight:500;font-size:19px;letter-spacing:-.01em;color:#fff}
+.cy-reg-top em{font-style:normal;font-size:12.5px;padding:6px 10px;border-radius:999px;background:rgba(0,117,255,.18);color:#9cc6ff}
+.cy-reg p{margin:0;font-size:14.5px;line-height:1.6;color:rgba(255,255,255,.75)}
+.cy-num{font-family:var(--display);font-weight:600;color:var(--blue);white-space:nowrap}
+.cy-big{margin-top:28px;padding:28px 32px}
+.cy-big b{font-size:clamp(40px,4vw,56px)}
+.cy-tips .cy-wide{grid-column:1 / -1}
+@media (max-width:1024px){.cy-cats{grid-template-columns:repeat(2,minmax(0,1fr))}.cy-regs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:734px){.cy-cats,.cy-regs{grid-template-columns:minmax(0,1fr)}.cy-cap-mid{margin-top:40px}}

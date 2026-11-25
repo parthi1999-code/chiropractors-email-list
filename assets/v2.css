@@ -1242,3 +1242,15 @@ svg.i{width:18px;height:18px;flex:none}
 @media (max-width:560px){
   .hdr.menu-open .dd-panel.data .dd-grid{grid-template-columns:minmax(0,1fr)}
 }
+/* data menu: lighter healthcare list, more air */
+.dd-panel.data .dd-grid{gap:0 16px}
+.dd-link{display:block;padding:7px 10px;border-radius:8px;font-size:14px;font-weight:500;color:var(--ink-2,#3b4767);text-decoration:none;line-height:1.35;transition:background .15s,color .15s}
+.dd-link:hover,.dd-link[aria-current]{background:rgba(255,255,255,.75);color:var(--ink)}
+.dd-panel.data h6{margin-bottom:14px}
+.dd-panel.data .dd-stack{gap:6px}
+.dd-panel.data .dd-stack + h6{margin-top:26px}
+@media (min-width:1025px){
+  .dd-panel.wide.data{padding:30px 12px 28px;grid-template-columns:minmax(0,1.5fr) repeat(3,minmax(0,1fr))}
+  .dd-panel.data > .dd-col{padding:0 22px}
+}
+.dd-panel.data .dd-hc .dd-grid,.dd-panel.data .dd-stack{margin-left:-10px;margin-right:-10px}

@@ -1220,3 +1220,25 @@ svg.i{width:18px;height:18px;flex:none}
   .btn-line:hover{border-color:transparent}
 }
 @media (prefers-reduced-motion:reduce){.btn::after,.btn-roll > span,.tile-track svg{transition:none}}
+/* data menu: healthcare A-Z | executive contacts | technology users | B2B data + hiring */
+.dd-panel.data .dd-col h6 + .dd-grid,.dd-panel.data .dd-col h6 + .dd-stack{margin-bottom:0}
+.dd-panel.data .dd-stack{display:flex;flex-direction:column;gap:2px}
+.dd-panel.data .dd-stack + h6{margin-top:18px}
+.dd-panel.data .dd-item.cmp{align-items:center;padding:6px 8px;gap:10px}
+.dd-panel.data .dd-item.cmp .dd-ic{width:28px;height:28px}
+.dd-panel.data .dd-item.cmp .dd-ic svg{width:14px;height:14px}
+.dd-panel.data .dd-grid{gap:2px 8px}
+@media (min-width:1025px){
+  .hdr-in{position:relative}
+  .dd.dd-mega{position:static}
+  .dd-panel.wide.data{width:auto;max-width:1120px;left:16px;right:16px;margin:0 auto;top:calc(100% + 4px);grid-template-columns:minmax(0,1.8fr) repeat(3,minmax(0,1fr));gap:0;padding:22px 8px}
+  .dd-panel.data > .dd-col{padding:0 16px}
+  .dd-panel.data > .dd-col + .dd-col{border-left:1px solid var(--line)}
+}
+@media (max-width:1024px){
+  .hdr.menu-open .dd-panel.data .dd-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hdr.menu-open .dd-panel.data > .dd-col + .dd-col{margin-top:16px}
+}
+@media (max-width:560px){
+  .hdr.menu-open .dd-panel.data .dd-grid{grid-template-columns:minmax(0,1fr)}
+}

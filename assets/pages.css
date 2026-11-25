@@ -555,3 +555,8 @@ a.cio-chip svg:last-child{width:14px;height:14px;color:var(--accent)}
 .cy-tips .cy-wide{grid-column:1 / -1}
 @media (max-width:1024px){.cy-cats{grid-template-columns:repeat(2,minmax(0,1fr))}.cy-regs{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:734px){.cy-cats,.cy-regs{grid-template-columns:minmax(0,1fr)}.cy-cap-mid{margin-top:40px}}
+/* contact form: spam guard */
+.ct-hp{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}
+.ct-err{display:none;font-size:12.5px;line-height:1.4;color:#c2410c}
+.ct-err.on{display:block}
+.ct-f [aria-invalid="true"]{border-color:#ea580c;background:#fff7ed}

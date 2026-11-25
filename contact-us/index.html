@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:ital,wght@0,500;0,600;0,700;0,800;1,800&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/v2.css?v=731cefe2">
-<link rel="stylesheet" href="../assets/pages.css?v=7e3e030b">
+<link rel="stylesheet" href="../assets/pages.css?v=fafad96f">
 </head>
 <body class="has-strip page-inner">
 <div class="preview-strip" role="note">Design preview · not the live Infinyx Global site</div>
@@ -41,13 +41,14 @@
 <form class="ct-form" id="form" novalidate>
 <h2>Tell us what you need</h2><p>Share a few details and the right specialist will get back to you within one business day.</p>
 <div class="ct-fields">
-<div class="ct-f"><label for="f-fn">First name</label><input id="f-fn" name="first" autocomplete="given-name" required></div>
-<div class="ct-f"><label for="f-ln">Last name</label><input id="f-ln" name="last" autocomplete="family-name"></div>
-<div class="ct-f"><label for="f-em">Work email</label><input id="f-em" name="email" type="email" autocomplete="email" required></div>
-<div class="ct-f"><label for="f-co">Company</label><input id="f-co" name="company" autocomplete="organization" required></div>
+<div class="ct-f"><label for="f-fn">First name</label><input id="f-fn" name="first" autocomplete="given-name" maxlength="60" required></div>
+<div class="ct-f"><label for="f-ln">Last name</label><input id="f-ln" name="last" autocomplete="family-name" maxlength="60"></div>
+<div class="ct-f"><label for="f-em">Work email</label><input id="f-em" name="email" type="email" autocomplete="email" maxlength="120" required aria-describedby="f-em-err"><small class="ct-err" id="f-em-err" aria-live="polite"></small></div>
+<div class="ct-f"><label for="f-co">Company</label><input id="f-co" name="company" autocomplete="organization" maxlength="120" required></div>
 <div class="ct-f full"><label for="f-rg">Target region</label><select id="f-rg" name="region"><option>North America</option><option>EMEA</option><option>APAC</option><option>LATAM</option><option>Multiple regions</option></select></div>
 <div class="ct-f full"><span style="font-size:13.5px;font-weight:500">I’m interested in</span><div class="ct-chips"><label><input type="checkbox" name="interest" value="b2b-data">B2B data</label><label><input type="checkbox" name="interest" value="lead-generation">Lead generation</label><label><input type="checkbox" name="interest" value="seo-aeo-amp-geo">SEO, AEO &amp; GEO</label><label><input type="checkbox" name="interest" value="website-design">Website design</label><label><input type="checkbox" name="interest" value="recruitment">Recruitment</label><label><input type="checkbox" name="interest" value="something-else">Something else</label></div></div>
-<div class="ct-f full"><label for="f-msg">How can we help?</label><textarea id="f-msg" name="message" placeholder="Your target audience, markets and timeline"></textarea></div>
+<div class="ct-f full"><label for="f-msg">How can we help?</label><textarea id="f-msg" name="message" maxlength="2000" placeholder="Your target audience, markets and timeline" aria-describedby="f-msg-err"></textarea><small class="ct-err" id="f-msg-err" aria-live="polite"></small></div>
+<div class="ct-hp" aria-hidden="true"><label for="f-web">Website</label><input id="f-web" name="website" tabindex="-1" autocomplete="off"></div>
 </div>
 <label class="ct-consent"><input type="checkbox" required> I agree to Infinyx Global contacting me about this request. We never share your details.</label>
 <button class="btn ct-submit" type="submit">Send my request<span class="tile"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
@@ -80,6 +81,6 @@
 </div><div class="ftr-wm" aria-hidden="true">Infinyx</div></footer>
 <script src="../assets/lenis.min.js?v=05808051" defer></script>
 <script src="../assets/v2.js?v=7702d9ea" defer></script>
-<script src="../assets/pages.js?v=44c3fa15" defer></script>
+<script src="../assets/pages.js?v=90753af7" defer></script>
 </body>
 </html>

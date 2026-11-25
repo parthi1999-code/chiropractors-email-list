@@ -1254,3 +1254,14 @@ svg.i{width:18px;height:18px;flex:none}
   .dd-panel.data > .dd-col{padding:0 22px}
 }
 .dd-panel.data .dd-hc .dd-grid,.dd-panel.data .dd-stack{margin-left:-10px;margin-right:-10px}
+/* data menu: healthcare icons back, with room */
+.dd-panel.data .dd-grid{row-gap:6px}
+.dd-panel.data .dd-item.cmp{padding:7px 10px;gap:12px}
+.dd-panel.data .dd-item.cmp b{font-weight:500;font-size:14px;color:var(--ink-2,#3b4767)}
+.dd-panel.data .dd-item.cmp:hover b,.dd-panel.data .dd-item.cmp[aria-current] b{color:var(--ink)}
+@media (min-width:1025px){.dd-panel.wide.data{grid-template-columns:minmax(0,2.1fr) repeat(3,minmax(0,1fr))}.dd-panel.data .dd-item.cmp b{white-space:nowrap}}
+@media (min-width:1025px){
+  .dd-panel.wide.data{grid-template-columns:max-content repeat(3,minmax(0,1fr))}
+  .dd-panel.data .dd-hc .dd-grid{grid-template-columns:repeat(2,max-content);column-gap:20px}
+}
+@media (min-width:1025px) and (max-width:1279px){.dd-panel.data > .dd-col{padding:0 16px}}
